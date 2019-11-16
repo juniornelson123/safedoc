@@ -38,3 +38,8 @@ Alterar configurações de banco no arquivo /config/dev.exs:
 ## Semear Banco de Dados
 
 	mix run priv/repo/seeds.exs
+
+## Iniciar Servidor
+
+	mix phx.server
+
