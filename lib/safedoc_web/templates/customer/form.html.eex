@@ -1,0 +1,65 @@
+<%= form_for @changeset, @action, [class: "uk-form-stacked"], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+    
+  <div class="uk-margin">
+    <%= label f, :reason_social, "Razão Social",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :reason_social, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :reason_social %>
+  </div>
+  
+  <div class="uk-margin">
+    <%= label f, :fantasy_name, "Nome Fantasia",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :fantasy_name, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :fantasy_name %>
+  </div>
+
+
+  <div class="uk-margin">
+    <%= label f, :code, "Codigo",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :code, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :code %>
+  </div>
+  <div class="uk-margin">
+    <%= label f, :kind, "Tipo",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= select f, :kind, ["Pessoa Fisica", "Pessoa Juridica"], class: "uk-input" %>
+    </div>
+    <%= error_tag f, :kind %>
+  </div>
+  <div class="uk-margin">
+    <%= label f, :cnpj, "CNPJ",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :cnpj, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :cnpj %>
+  </div>
+  <div class="uk-margin">
+    <%= label f, :state_registration, "Incrição Estadual",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :state_registration, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :state_registration %>
+  </div>
+  <div class="uk-margin">
+    <%= label f, :municipal_registration, "Incrição Municipal",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :municipal_registration, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :municipal_registration %>
+  </div>
+  <div>
+    <span><%= link "Cancelar", to: Routes.customer_path(@conn, :index), class: "uk-button uk-button-danger" %></span>
+    <%= submit "Salvar", class: "uk-button uk-button-primary" %>
+  </div>
+<% end %>

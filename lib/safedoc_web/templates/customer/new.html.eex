@@ -1,0 +1,3 @@
+<h1 class="uk-text-lead">Novo Cliente</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.customer_path(@conn, :create)) %>

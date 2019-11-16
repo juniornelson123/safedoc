@@ -1,0 +1,18 @@
+<h1>Show Collaborator</h1>
+
+<ul>
+
+  <li>
+    <strong>Office:</strong>
+    <%= @collaborator.office %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @collaborator.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.collaborator_path(@conn, :edit, @collaborator) %></span>
+<span><%= link "Back", to: Routes.collaborator_path(@conn, :index) %></span>

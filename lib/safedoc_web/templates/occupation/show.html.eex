@@ -1,0 +1,23 @@
+<h1>Show Occupation</h1>
+
+<ul>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @occupation.status %>
+  </li>
+
+  <li>
+    <strong>Date start:</strong>
+    <%= @occupation.date_start %>
+  </li>
+
+  <li>
+    <strong>Date end:</strong>
+    <%= @occupation.date_end %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.occupation_path(@conn, :edit, @occupation) %></span>
+<span><%= link "Back", to: Routes.occupation_path(@conn, :index) %></span>

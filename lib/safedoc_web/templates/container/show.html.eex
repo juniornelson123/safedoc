@@ -1,0 +1,18 @@
+<h1>Show Container</h1>
+
+<ul>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @container.code %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @container.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.container_path(@conn, :edit, @container) %></span>
+<span><%= link "Back", to: Routes.container_path(@conn, :index) %></span>

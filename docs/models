@@ -1,0 +1,16 @@
+mix phx.gen.context Account User users name email password
+mix phx.gen.html Account Customer customers code kind status cpf rg state_registration municipal_registration cnpj reason_social fantasy_name user_id:references:users
+mix phx.gen.context Account Phone phones number customer_id:references:customers
+mix phx.gen.html Account Collaborator collaborators office status user_id:references:users
+
+mix phx.gen.html Setting Step steps name position:integer
+mix phx.gen.html Setting Occupation occupations status date_start:datetime date_end:datetime step_id:references:steps collaborator_id:references:collaborators
+
+
+mix phx.gen.html Archive Category categories name amount:integer 
+mix phx.gen.html Archive Container containers code description:text container_id:references:containers
+mix phx.gen.html Archive Document documents code customer_id:text container_id:references:containers status
+mix phx.gen.html Archive Service services document_id:references:documents step_id:references:steps collaborator_id:references:collaborators status
+
+
+mix phx.gen.context Location Address addresses cep street number:integer district complement customer_id:references:customers city_id:references:cities

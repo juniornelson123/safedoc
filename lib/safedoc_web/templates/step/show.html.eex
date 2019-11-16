@@ -1,0 +1,18 @@
+<h1>Show Step</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @step.name %>
+  </li>
+
+  <li>
+    <strong>Position:</strong>
+    <%= @step.position %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.step_path(@conn, :edit, @step) %></span>
+<span><%= link "Back", to: Routes.step_path(@conn, :index) %></span>

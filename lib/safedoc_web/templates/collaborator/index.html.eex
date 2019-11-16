@@ -1,0 +1,28 @@
+<h1>Listing Collaborators</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Office</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for collaborator <- @collaborators do %>
+    <tr>
+      <td><%= collaborator.office %></td>
+      <td><%= collaborator.status %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.collaborator_path(@conn, :show, collaborator) %></span>
+        <span><%= link "Edit", to: Routes.collaborator_path(@conn, :edit, collaborator) %></span>
+        <span><%= link "Delete", to: Routes.collaborator_path(@conn, :delete, collaborator), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Collaborator", to: Routes.collaborator_path(@conn, :new) %></span>

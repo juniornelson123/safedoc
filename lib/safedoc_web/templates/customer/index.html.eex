@@ -1,0 +1,38 @@
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Clientes</h1>
+  <span>
+    <%= link to: Routes.customer_path(@conn, :new), class: "uk-button uk-button-primary" do %>
+      <span uk-icon="plus" class="uk-margin-small-right"></span>
+      Novo Cliente
+    <% end %>
+  </span>
+</div>
+
+<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>CNPJ</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for customer <- @customers do %>
+    <tr>
+      <td><%= customer.code %></td>
+      <td><%= customer.fantasy_name %></td>
+      <td><%= customer.kind %></td>
+      <td><%= customer.cnpj %></td>
+      
+      <td>
+        <span><%= link "Detalhes", to: Routes.customer_path(@conn, :show, customer), class: "uk-button uk-button-primary" %></span>
+        <span><%= link "Editar", to: Routes.customer_path(@conn, :edit, customer), class: "uk-button uk-button-secondary" %></span>
+        <span><%= link "Deletar", to: Routes.customer_path(@conn, :delete, customer), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+

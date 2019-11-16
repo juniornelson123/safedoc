@@ -1,0 +1,28 @@
+<h1>Listing Containers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for container <- @containers do %>
+    <tr>
+      <td><%= container.code %></td>
+      <td><%= container.description %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.container_path(@conn, :show, container) %></span>
+        <span><%= link "Edit", to: Routes.container_path(@conn, :edit, container) %></span>
+        <span><%= link "Delete", to: Routes.container_path(@conn, :delete, container), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Container", to: Routes.container_path(@conn, :new) %></span>

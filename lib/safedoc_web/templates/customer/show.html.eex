@@ -1,0 +1,58 @@
+<h1>Show Customer</h1>
+
+<ul>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @customer.code %>
+  </li>
+
+  <li>
+    <strong>Kind:</strong>
+    <%= @customer.kind %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @customer.status %>
+  </li>
+
+  <li>
+    <strong>Cpf:</strong>
+    <%= @customer.cpf %>
+  </li>
+
+  <li>
+    <strong>Rg:</strong>
+    <%= @customer.rg %>
+  </li>
+
+  <li>
+    <strong>State registration:</strong>
+    <%= @customer.state_registration %>
+  </li>
+
+  <li>
+    <strong>Municipal registration:</strong>
+    <%= @customer.municipal_registration %>
+  </li>
+
+  <li>
+    <strong>Cnpj:</strong>
+    <%= @customer.cnpj %>
+  </li>
+
+  <li>
+    <strong>Reason social:</strong>
+    <%= @customer.reason_social %>
+  </li>
+
+  <li>
+    <strong>Fantasy name:</strong>
+    <%= @customer.fantasy_name %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.customer_path(@conn, :edit, @customer) %></span>
+<span><%= link "Back", to: Routes.customer_path(@conn, :index) %></span>

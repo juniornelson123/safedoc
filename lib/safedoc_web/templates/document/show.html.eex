@@ -1,0 +1,23 @@
+<h1>Show Document</h1>
+
+<ul>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @document.code %>
+  </li>
+
+  <li>
+    <strong>Customer:</strong>
+    <%= @document.customer_id %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @document.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.document_path(@conn, :edit, @document) %></span>
+<span><%= link "Back", to: Routes.document_path(@conn, :index) %></span>

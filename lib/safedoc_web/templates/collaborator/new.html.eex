@@ -1,0 +1,5 @@
+<h1>New Collaborator</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.collaborator_path(@conn, :create)) %>
+
+<span><%= link "Back", to: Routes.collaborator_path(@conn, :index) %></span>
