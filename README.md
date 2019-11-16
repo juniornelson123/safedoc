@@ -1,6 +1,6 @@
 # SAFEDOC!
 
-Sistema para gestão e armazenamento de arquivos.
+Sistema para gestão e armazenamento de arquivos
 
 # Dependências
 
