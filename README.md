@@ -4,12 +4,12 @@ Sistema para gestão e armazenamento de arquivos.
 
 # Dependências
 
-Elixir >= 1.6.4
-Phoenix Framework >= 1.4
-PostgreSQL >= 9.0
+	Elixir >= 1.6.4
+	Phoenix Framework >= 1.4
+	PostgreSQL >= 9.0
 
-Instalação Elixir: https://elixir-lang.org/install.html
-Instalação Phoenix Framework: https://hexdocs.pm/phoenix/installation.html
+	Instalação Elixir: https://elixir-lang.org/install.html
+	Instalação Phoenix Framework: https://hexdocs.pm/phoenix/installation.html
 
 ## Atualizar Dependências
 
