@@ -1,0 +1,31 @@
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  -webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-style: normal;
+  font-weight: 400;
+  font-size: $typeBase;
+  line-height: 1;
+  background: #F4F6FC;
+  font-family: 'Rubik', sans-serif;
+  // background: $whiteColor;
+  letter-spacing: -0.015em;
+}
+

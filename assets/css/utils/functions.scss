@@ -1,0 +1,24 @@
+@function isDirection($value) {
+  $isKeyword: index(
+    (
+      to top,
+      to top right,
+      to right top,
+      to right,
+      to bottom right,
+      to right bottom,
+      to bottom,
+      to bottom left,
+      to left bottom,
+      to left,
+      to left top,
+      to top left
+    ),
+    $value
+  );
+
+  $isAngle: type-of($value) == "number" and
+    index("deg" "grad" "turn" "rad", unit($value));
+
+  @return $isKeyword or $isAngle;
+}

@@ -1,0 +1,88 @@
+/* 1. Colors */
+
+$primaryColor: #007bff;
+// $primaryColor: #450090;
+$secondaryColor: #025;
+$accentColor: #117a8b;
+$complementaryColor: #450090;
+$textColor: #0a2246;
+$grayColor: #7c989d;
+$lightGrayColor: lighten($grayColor, 10);
+$whiteColor: #ffffff;
+$blackColor: #000000;
+$transparentColor: rgba(255, 255, 255, 0);
+$borderColor: #d2dde5;
+$successColor: #6abe83;
+$infoColor: #3a9ad9;
+$warnColor: #fed95c;
+$dangerColor: #d25565;
+$bgColor: #dce5ec;
+
+/* 1.1 Social Colors */
+
+$facebookBlueColor: #3b5998;
+$instagramGradient: linear-gradient(
+  to bottom right,
+  #405de6,
+  #5851db,
+  #833ab4,
+  #c13584,
+  #e1306c,
+  #fd1d1d,
+  #f56040,
+  #f77737,
+  #fcaf45,
+  #ffdc80
+);
+$whatsappColor: #25d366;
+
+/* 2. Spacings */
+
+$microSize: 4px;
+$tinySize: 8px;
+$smallSize: 16px;
+$baseSize: 24px;
+$largeSize: 32px;
+$xLargeSize: 48px;
+$XxLargeSize: 64px;
+
+/* 3. Type Sizes */
+
+$typeMicro: 8px;
+$typeBase: 16px;
+$typeLarge: 24px;
+$typeXLarge: 32px;
+$typeTitleSmall: 40px;
+$typeTitleRegular: 48px;
+$typeTitleLarge: 56px;
+$lineHeightBase: 1.35;
+
+/* 4. Timing */
+$timingEnter: 300ms;
+$timingExit: 150ms;
+$timingMove: 500ms;
+
+/* 5. Easing */
+
+$easingDecelerate: cubic-bezier(0.1, 0.9, 0.2, 1);
+$easingAccelerate: cubic-bezier(0.7, 0, 1, 0.5);
+$easingStandard: cubic-bezier(0.8, 0, 0.2, 1);
+
+$easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+$easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+$easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+$easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);

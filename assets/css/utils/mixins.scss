@@ -1,0 +1,40 @@
+@mixin linearGradient($direction, $type: null, $colorStops...) {
+  @if isDirection($direction) == false {
+    $colorStops: $direction, $colorStops;
+    $direction: 180deg;
+  }
+
+  @if $type == "primary" {
+    $colorStops: (#c3a1e8 0%, #8d75a9 100%);
+  } @else if $type == "success" {
+    $colorStops: (#11998e 0%, #38ef7d 100%);
+  } @else if $type == "info" {
+    $colorStops: (#56ccf2 0%, #2f80ed 100%);
+  } @else if $type == "warn" {
+    $colorStops: (#f7971e 0%, #ffd200 100%);
+  } @else if $type == "danger" {
+    $colorStops: (#cb2d3e 0%, #ef473a 100%);
+  } @else {
+    $colorStops: $colorStops;
+  }
+
+  background: linear-gradient($direction, $colorStops);
+}
+
+@mixin truncateString($width) {
+  width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin visibilityHidden() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+}
