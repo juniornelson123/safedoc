@@ -9,9 +9,9 @@ RELEASE_DIR="/tmp/edeliver/$APP/builds/_build/prod/rel/$APP"
 # prevent re-installing node modules; this defaults to "."
 GIT_CLEAN_PATHS="_build rel priv/static"
 
-# STAGING_HOSTS="167.71.167.100"
-# STAGING_USER="deploy"
-# TEST_AT="/home/deploy/staging"
+STAGING_HOSTS="167.71.167.100"
+STAGING_USER="deploy"
+TEST_AT="/home/deploy/staging"
 
 PRODUCTION_HOSTS="167.71.167.100"
 PRODUCTION_USER="deploy"
