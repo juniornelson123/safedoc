@@ -20,7 +20,7 @@ defmodule Safedoc.MixProject do
   def application do
     [
       mod: {Safedoc.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :edeliver]
     ]
   end
 
@@ -45,8 +45,8 @@ defmodule Safedoc.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:guardian, "~> 2.0"},
       {:argon2_elixir, "~> 2.0"},
-      {:edeliver, "~> 1.4.2"},
-      {:distillery, "~> 1.4"}
+      {:edeliver, ">= 1.6.0"},
+      {:distillery, "~> 2.1.1", warn_missing: false},
     ]
   end
 
