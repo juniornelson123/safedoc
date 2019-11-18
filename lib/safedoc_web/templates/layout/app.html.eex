@@ -36,11 +36,11 @@
     </header>  
     <div class="tm-sidebar-left uk-visible@m">
       <ul class="uk-list">
-        <li class="uk-flex uk-flex-middle list-item isActive">
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path == "/", do: "isActive"%>'>
           <span class="uk-margin-medium-right" uk-icon="home"></span>
           <%= link "Visão Geral", to: Routes.page_path(@conn, :index)%>
         </li>
-        <li class="uk-flex uk-flex-middle list-item">
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/clientes", do: "isActive"%>'>
           <span class="uk-margin-medium-right" uk-icon="users"></span>
           <%= link "Clientes", to: Routes.customer_path(@conn, :index)%>
         </li>
