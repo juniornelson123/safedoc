@@ -2,7 +2,7 @@ APP="safedoc"
 
 BUILD_HOST="167.71.167.100"
 BUILD_USER="deploy"
-BUILD_AT="/home/sammy/app_build"
+BUILD_AT="/home/deploy/app_build"
 
 GIT_CLEAN_PATHS="_build rel priv/static"
 
