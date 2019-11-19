@@ -7,8 +7,7 @@ defmodule Safedoc.Account.ErrorHandler do
   def auth_error(conn, {type, _reason}, _opts) do
     body = to_string(type)
     conn
-    |> put_resp_content_type("text/plain")
-    |> send_resp(401, body)
+    |> Phoenix.Controller.redirect(to: SafedocWeb.Router.Helpers.session_path(conn, :new))
   end
 
   def unauthenticated(conn, _params) do
