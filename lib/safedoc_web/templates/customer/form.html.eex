@@ -4,57 +4,6 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-  <%= inputs_for f, :user, fn fp -> %>
-    <div class="uk-margin">
-      <%= label fp, :name, "Nome",class: "uk-form-label" %>
-      <div class="uk-form-controls">
-        <%= text_input fp, :name, class: "uk-input" %>
-      </div>
-      <%= error_tag fp, :name %>
-    </div>
-    <div class="uk-margin">
-      <%= label fp, :email, "Email",class: "uk-form-label" %>
-      <div class="uk-form-controls">
-        <%= text_input fp, :email, class: "uk-input" %>
-      </div>
-      <%= error_tag fp, :email %>
-    </div>
-    <div class="uk-margin">
-      <div class="uk-form-controls">
-        <%= hidden_input fp, :password, value: "12345678", class: "uk-input" %>
-      </div>
-    </div>
-  <% end %>
-  <div class="uk-margin">
-    <%= label f, :cpf, "CPF",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :cpf, class: "uk-input" %>
-    </div>
-    <%= error_tag f, :cpf %>
-  </div>
-  <div class="uk-margin">
-    <%= label f, :rg, "RG",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :rg, class: "uk-input" %>
-    </div>
-    <%= error_tag f, :rg %>
-  </div>
-
-
-  <div class="uk-margin">
-    <%= label f, :reason_social, "Razão Social",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :reason_social, class: "uk-input" %>
-    </div>
-    <%= error_tag f, :reason_social %>
-  </div>
-  <div class="uk-margin">
-    <%= label f, :fantasy_name, "Nome Fantasia",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :fantasy_name, class: "uk-input" %>
-    </div>
-    <%= error_tag f, :fantasy_name %>
-  </div>
   <div class="uk-margin">
     <%= label f, :kind, "Tipo",class: "uk-form-label" %>
     <div class="uk-form-controls">
@@ -62,26 +11,80 @@
     </div>
     <%= error_tag f, :kind %>
   </div>
-  <div class="uk-margin">
-    <%= label f, :cnpj, "CNPJ",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :cnpj, class: "uk-input" %>
+  <div id="individual">
+    <%= inputs_for f, :user, fn fp -> %>
+      <div class="uk-margin">
+        <%= label fp, :name, "Nome",class: "uk-form-label" %>
+        <div class="uk-form-controls">
+          <%= text_input fp, :name, class: "uk-input" %>
+        </div>
+        <%= error_tag fp, :name %>
+      </div>
+      <div class="uk-margin">
+        <%= label fp, :email, "Email",class: "uk-form-label" %>
+        <div class="uk-form-controls">
+          <%= text_input fp, :email, class: "uk-input" %>
+        </div>
+        <%= error_tag fp, :email %>
+      </div>
+      <div class="uk-margin">
+        <div class="uk-form-controls">
+          <%= hidden_input fp, :password, value: "12345678", class: "uk-input" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="uk-margin">
+      <%= label f, :cpf, "CPF",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input f, :cpf, class: "uk-input" %>
+      </div>
+      <%= error_tag f, :cpf %>
     </div>
-    <%= error_tag f, :cnpj %>
+    <div class="uk-margin">
+      <%= label f, :rg, "RG",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input f, :rg, class: "uk-input" %>
+      </div>
+      <%= error_tag f, :rg %>
+    </div>
   </div>
-  <div class="uk-margin">
-    <%= label f, :state_registration, "Incrição Estadual",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :state_registration, class: "uk-input" %>
+
+  <div id="juridical" class="isHidden">
+    <div class="uk-margin">
+      <%= label f, :reason_social, "Razão Social",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input f, :reason_social, class: "uk-input" %>
+      </div>
+      <%= error_tag f, :reason_social %>
     </div>
-    <%= error_tag f, :state_registration %>
-  </div>
-  <div class="uk-margin">
-    <%= label f, :municipal_registration, "Incrição Municipal",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :municipal_registration, class: "uk-input" %>
+    <div class="uk-margin">
+      <%= label f, :fantasy_name, "Nome Fantasia",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input f, :fantasy_name, class: "uk-input" %>
+      </div>
+      <%= error_tag f, :fantasy_name %>
     </div>
-    <%= error_tag f, :municipal_registration %>
+    <div class="uk-margin">
+      <%= label f, :cnpj, "CNPJ",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input f, :cnpj, class: "uk-input" %>
+      </div>
+      <%= error_tag f, :cnpj %>
+    </div>
+    <div class="uk-margin">
+      <%= label f, :state_registration, "Incrição Estadual",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input f, :state_registration, class: "uk-input" %>
+      </div>
+      <%= error_tag f, :state_registration %>
+    </div>
+    <div class="uk-margin">
+      <%= label f, :municipal_registration, "Incrição Municipal",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input f, :municipal_registration, class: "uk-input" %>
+      </div>
+      <%= error_tag f, :municipal_registration %>
+    </div>
   </div>
   <div>
     <span><%= link "Cancelar", to: Routes.customer_path(@conn, :index), class: "uk-button uk-button-danger" %></span>
