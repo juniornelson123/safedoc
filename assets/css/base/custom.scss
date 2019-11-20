@@ -2,8 +2,20 @@
   color: #B0BAC9;
 }
 
+.uk-table-separate {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+
+  tbody tr{
+    background: white;
+    border: 1px solid rgba(46, 91, 255, 0.08);
+    box-sizing: border-box;
+    border-radius: 1px;
+  }
+}
 
 
+ 
 .tm-sidebar-left {
   position: fixed;
   top: 80px;

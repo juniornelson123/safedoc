@@ -8,7 +8,7 @@
   </span>
 </div>
 
-<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+<table class="uk-table uk-table-hover uk-table-center uk-table-middle uk-table-divider uk-table-separate" cellspacing="10">
   <thead>
     <tr>
       <th>Nome</th>
@@ -23,9 +23,8 @@
         <td><%= category.amount %></td>
         
         <td>
-          <span><%= link "Detalhes", to: Routes.category_path(@conn, :show, category), class: "uk-button uk-button-primary" %></span>
-          <span><%= link "Editar", to: Routes.category_path(@conn, :edit, category), class: "uk-button uk-button-secondary" %></span>
-          <span><%= link "Deletar", to: Routes.category_path(@conn, :delete, category), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+          <span><%= link "Gerenciar", to: Routes.category_path(@conn, :show, category), class: "uk-button uk-button-primary" %></span>
+          
         </td>
       </tr>
     <% end %>

@@ -1,1 +1,48 @@
 <h1 class="uk-text-lead">Visão Geral</h1>
+
+<div class="uk-flex">  
+  <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-margin-small-right">
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-auto">
+            <div class="backgroundIcon isPrimary">
+              <span class="" uk-icon="users"></span>
+            </div>
+        </div>
+    </div>
+    <p class="uk-heading-small">316</p>
+    <p>Total de clientes</p>
+  </div>
+  <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-margin-small-right">
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-auto">
+            <div class="backgroundIcon isSecondary">
+              <span class="" uk-icon="users"></span>
+            </div>
+        </div>
+    </div>
+    <p class="uk-heading-small">316</p>
+    <p>Total de clientes</p>
+  </div>
+  <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-margin-small-right">
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-auto">
+            <div class="backgroundIcon isInfo">
+              <span class="" uk-icon="users"></span>
+            </div>
+        </div>
+    </div>
+    <p class="uk-heading-small">316</p>
+    <p>Total de clientes</p>
+  </div>
+  <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-auto">
+            <div class="backgroundIcon isWarning">
+              <span class="" uk-icon="users"></span>
+            </div>
+        </div>
+    </div>
+    <p class="uk-heading-small">316</p>
+    <p>Total de clientes</p>
+  </div>
+</div>

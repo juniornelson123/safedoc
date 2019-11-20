@@ -1,0 +1,54 @@
+.backgroundIcon {
+  border-radius: 9999px; 
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.isPrimary {
+    background-color: #E0E6FF;
+    .uk-icon {
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+      color: #2E5BFF;
+    }
+  }
+  
+  &.isSecondary {
+    background-color: #EEE5FF;
+
+    .uk-icon {
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+      color: #8C54FF;
+    }
+  }
+  
+  &.isInfo {
+    background-color: #D9F6F9;
+    
+    .uk-icon {
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+      color: #00C1D4;
+    }
+  }
+  
+  &.isWarning {
+    background-color: #FEF6E1;
+    
+    .uk-icon {
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+      color: #F7C137;
+    }
+  }
+}
