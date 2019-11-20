@@ -1,6 +1,5 @@
 <h1 class="uk-text-lead">Visão Geral</h1>
-
-<div class="uk-flex">  
+<div class="uk-flex">
   <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-margin-small-right">
     <div class="uk-grid-small uk-flex-middle" uk-grid>
         <div class="uk-width-auto">
@@ -9,40 +8,90 @@
             </div>
         </div>
     </div>
-    <p class="uk-heading-small">316</p>
+    <p class="uk-heading-small"><%= @customers_all %></p>
     <p>Total de clientes</p>
   </div>
   <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-margin-small-right">
     <div class="uk-grid-small uk-flex-middle" uk-grid>
         <div class="uk-width-auto">
             <div class="backgroundIcon isSecondary">
-              <span class="" uk-icon="users"></span>
+              <span class="" uk-icon="file-text"></span>
             </div>
         </div>
     </div>
-    <p class="uk-heading-small">316</p>
-    <p>Total de clientes</p>
+    <p class="uk-heading-small"><%= @documents %></p>
+    <p>Total de documentos</p>
   </div>
   <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-margin-small-right">
     <div class="uk-grid-small uk-flex-middle" uk-grid>
         <div class="uk-width-auto">
             <div class="backgroundIcon isInfo">
-              <span class="" uk-icon="users"></span>
+              <span class="" uk-icon="user"></span>
             </div>
         </div>
     </div>
-    <p class="uk-heading-small">316</p>
-    <p>Total de clientes</p>
+    <p class="uk-heading-small"><%= @collaborators %></p>
+    <p>Total de colaboradores</p>
   </div>
   <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
     <div class="uk-grid-small uk-flex-middle" uk-grid>
         <div class="uk-width-auto">
             <div class="backgroundIcon isWarning">
-              <span class="" uk-icon="users"></span>
+              <span class="" uk-icon="check"></span>
             </div>
         </div>
     </div>
-    <p class="uk-heading-small">316</p>
-    <p>Total de clientes</p>
+    <p class="uk-heading-small"><%= @services %></p>
+    <p>Total de serviços</p>
   </div>
 </div>
+
+<div class="uk-flex uk-flex-between uk-margin-medium-top">
+  <h1 class="uk-text-lead">Últimos clientes cadastrados</h1>
+  <span>
+    <%= link to: Routes.customer_path(@conn, :new), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+      <span uk-icon="plus" class="uk-margin-small-right"></span>
+      Novo
+    <% end %>
+  </span>
+</div>
+
+<table class="uk-table uk-table-hover uk-table-center uk-table-middle uk-table-divider uk-table-separate" cellspacing="10">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>CNPJ/CPF</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for customer <- @customers do %>
+    <tr>
+      <td><%= customer.id %></td>
+      <%= if customer.kind == "individual" do %>
+        <td><%= if customer.user != nil, do: customer.user.name, else: "-" %></td>
+      <% else %>  
+        <td><%= customer.fantasy_name %></td>
+      <% end %>
+      <%= if customer.kind == "individual" do %>
+        <td>Pessoa Fisica</td>
+      <% else %>  
+        <td>Pessoa Juridica</td>
+      <% end %>
+      <%= if customer.kind == "individual" do %>
+        <td><%= customer.cpf %></td>
+      <% else %>  
+        <td><%= customer.cnpj %></td>
+      <% end %>
+      
+      <td>
+        <span><%= link "Detalhes", to: Routes.customer_path(@conn, :show, customer), class: "uk-button uk-button-primary" %></span>
+        <span><%= link "Editar", to: Routes.customer_path(@conn, :edit, customer), class: "uk-button uk-button-secondary" %></span>
+        <span><%= link "Deletar", to: Routes.customer_path(@conn, :delete, customer), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

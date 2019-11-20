@@ -14,17 +14,29 @@
       <th>Code</th>
       <th>Nome</th>
       <th>Tipo</th>
-      <th>CNPJ</th>
+      <th>CNPJ/CPF</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
 <%= for customer <- @customers do %>
     <tr>
-      <td><%= customer.code %></td>
-      <td><%= customer.fantasy_name %></td>
-      <td><%= customer.kind %></td>
-      <td><%= customer.cnpj %></td>
+      <td><%= customer.id %></td>
+      <%= if customer.kind == "individual" do %>
+        <td><%= if customer.user != nil, do: customer.user.name, else: "-" %></td>
+      <% else %>  
+        <td><%= customer.fantasy_name %></td>
+      <% end %>
+      <%= if customer.kind == "individual" do %>
+        <td>Pessoa Fisica</td>
+      <% else %>  
+        <td>Pessoa Juridica</td>
+      <% end %>
+      <%= if customer.kind == "individual" do %>
+        <td><%= customer.cpf %></td>
+      <% else %>  
+        <td><%= customer.cnpj %></td>
+      <% end %>
       
       <td>
         <span><%= link "Detalhes", to: Routes.customer_path(@conn, :show, customer), class: "uk-button uk-button-primary" %></span>

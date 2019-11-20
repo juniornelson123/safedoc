@@ -130,9 +130,12 @@ defmodule Safedoc.Account do
       [%Customer{}, ...]
 
   """
-  def list_customers do
-    Repo.all(Customer)
+  def list_customers(size) do
+    query = from c in Customer, limit: ^size, order_by: [desc: c.inserted_at]
+    Repo.all(query)
   end
+
+  def list_customers, do: Repo.all(Customer)
 
   @doc """
   Gets a single customer.
@@ -148,7 +151,9 @@ defmodule Safedoc.Account do
       ** (Ecto.NoResultsError)
 
   """
-  def get_customer!(id), do: Repo.get!(Customer, id)
+  def get_customer!(id) do
+    Repo.get!(Customer, id)
+  end
 
   @doc """
   Creates a customer.

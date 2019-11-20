@@ -1,58 +1,65 @@
-<h1>Show Customer</h1>
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Clientes</h1>
+  <span>
+    <%= link to: Routes.customer_path(@conn, :index), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+      <span uk-icon="arrow-left" class="uk-margin-small-right"></span>
+      Voltar
+    <% end %>
+  </span>
+</div>
 
-<ul>
+<div class="uk-section uk-section-default uk-padding">
+  <div class="uk-container">
+    <div class="uk-flex uk-flex-between">
+      <span class="uk-text-bold">Tipo de cliente: </span>
+      <%= if @customer.kind == "individual" do %>
+        <span>Pessoa Fisica</span>
+      <% else %>  
+        <span>Pessoa Juridica</span>
+      <% end %>  
+    </div>
+    <%= if @customer.kind == "juridical" do %>
+      <div class="uk-flex uk-flex-between uk-margin-medium-top">
+        <span class="uk-text-bold">Nome Fantasia: </span>
+        <span><%= @customer.fantasy_name%></span>
+      </div>
+      <div class="uk-flex uk-flex-between uk-margin-medium-top">
+        <span class="uk-text-bold">Razão Social: </span>
+        <span><%= @customer.reason_social%></span>
+      </div>
+      <div class="uk-flex uk-flex-between uk-margin-medium-top">
+        <span class="uk-text-bold">Incrição Municipal: </span>
+        <span><%= @customer.municipal_registration%></span>
+      </div>
+      <div class="uk-flex uk-flex-between uk-margin-medium-top">
+        <span class="uk-text-bold">Incrição Estadual: </span>
+        <span><%= @customer.state_registration%></span>
+      </div>
+      <div class="uk-flex uk-flex-between uk-margin-medium-top">
+        <span class="uk-text-bold">CNPJ: </span>
+        <span><%= @customer.state_registration%></span>
+      </div>
+    <% end %>  
+    <%= if @customer.kind == "individual" do %>
+      <div class="uk-flex uk-flex-between uk-margin-medium-top">
+        <span class="uk-text-bold">RG: </span>
+        <span><%= @customer.rg%></span>
+      </div>
+      <div class="uk-flex uk-flex-between uk-margin-medium-top">
+        <span class="uk-text-bold">CPF: </span>
+        <span><%= @customer.cpf%></span>
+      </div>
+      <%= if @customer.user do %>
+        <div class="uk-flex uk-flex-between uk-margin-medium-top">
+          <span class="uk-text-bold">Nome: </span>
+          <span><%= @customer.user.name%></span>
+        </div>
+        <div class="uk-flex uk-flex-between uk-margin-medium-top">
+          <span class="uk-text-bold">Email: </span>
+          <span><%= @customer.user.email%></span>
+        </div>
+      <% end %>  
+    <% end %>  
+  </div>
+</div>
 
-  <li>
-    <strong>Code:</strong>
-    <%= @customer.code %>
-  </li>
-
-  <li>
-    <strong>Kind:</strong>
-    <%= @customer.kind %>
-  </li>
-
-  <li>
-    <strong>Status:</strong>
-    <%= @customer.status %>
-  </li>
-
-  <li>
-    <strong>Cpf:</strong>
-    <%= @customer.cpf %>
-  </li>
-
-  <li>
-    <strong>Rg:</strong>
-    <%= @customer.rg %>
-  </li>
-
-  <li>
-    <strong>State registration:</strong>
-    <%= @customer.state_registration %>
-  </li>
-
-  <li>
-    <strong>Municipal registration:</strong>
-    <%= @customer.municipal_registration %>
-  </li>
-
-  <li>
-    <strong>Cnpj:</strong>
-    <%= @customer.cnpj %>
-  </li>
-
-  <li>
-    <strong>Reason social:</strong>
-    <%= @customer.reason_social %>
-  </li>
-
-  <li>
-    <strong>Fantasy name:</strong>
-    <%= @customer.fantasy_name %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.customer_path(@conn, :edit, @customer) %></span>
-<span><%= link "Back", to: Routes.customer_path(@conn, :index) %></span>

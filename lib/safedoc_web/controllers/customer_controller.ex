@@ -1,16 +1,18 @@
 defmodule SafedocWeb.CustomerController do
   use SafedocWeb, :controller
 
+  alias Safedoc.Repo
   alias Safedoc.Account
   alias Safedoc.Account.Customer
+  alias Safedoc.Account.User
 
   def index(conn, _params) do
-    customers = Account.list_customers()
+    customers = Account.list_customers() |> Repo.preload([:user])
     render(conn, "index.html", customers: customers)
   end
 
   def new(conn, _params) do
-    changeset = Account.change_customer(%Customer{})
+    changeset = Account.change_customer(%Customer{}) |> Ecto.Changeset.put_assoc(:user, %Account.User{}) 
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -27,18 +29,19 @@ defmodule SafedocWeb.CustomerController do
   end
 
   def show(conn, %{"id" => id}) do
-    customer = Account.get_customer!(id)
+    customer = Account.get_customer!(id) |> Repo.preload([:user])
     render(conn, "show.html", customer: customer)
   end
 
   def edit(conn, %{"id" => id}) do
-    customer = Account.get_customer!(id)
-    changeset = Account.change_customer(customer)
+    customer = Account.get_customer!(id) |> Repo.preload(:user)
+    changeset = Account.change_customer(customer) 
     render(conn, "edit.html", customer: customer, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "customer" => customer_params}) do
-    customer = Account.get_customer!(id)
+    IO.inspect customer_params
+    customer = Account.get_customer!(id)  |> Repo.preload(:user)
 
     case Account.update_customer(customer, customer_params) do
       {:ok, customer} ->

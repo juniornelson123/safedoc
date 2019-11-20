@@ -4,8 +4,43 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
+  <%= inputs_for f, :user, fn fp -> %>
+    <div class="uk-margin">
+      <%= label fp, :name, "Nome",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input fp, :name, class: "uk-input" %>
+      </div>
+      <%= error_tag fp, :name %>
+    </div>
+    <div class="uk-margin">
+      <%= label fp, :email, "Email",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input fp, :email, class: "uk-input" %>
+      </div>
+      <%= error_tag fp, :email %>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-form-controls">
+        <%= hidden_input fp, :password, value: "12345678", class: "uk-input" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="uk-margin">
+    <%= label f, :cpf, "CPF",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :cpf, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :cpf %>
+  </div>
+  <div class="uk-margin">
+    <%= label f, :rg, "RG",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :rg, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :rg %>
+  </div>
 
-    
+
   <div class="uk-margin">
     <%= label f, :reason_social, "Razão Social",class: "uk-form-label" %>
     <div class="uk-form-controls">
@@ -13,7 +48,6 @@
     </div>
     <%= error_tag f, :reason_social %>
   </div>
-  
   <div class="uk-margin">
     <%= label f, :fantasy_name, "Nome Fantasia",class: "uk-form-label" %>
     <div class="uk-form-controls">
@@ -21,19 +55,10 @@
     </div>
     <%= error_tag f, :fantasy_name %>
   </div>
-
-
-  <div class="uk-margin">
-    <%= label f, :code, "Codigo",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :code, class: "uk-input" %>
-    </div>
-    <%= error_tag f, :code %>
-  </div>
   <div class="uk-margin">
     <%= label f, :kind, "Tipo",class: "uk-form-label" %>
     <div class="uk-form-controls">
-      <%= select f, :kind, ["Pessoa Fisica", "Pessoa Juridica"], class: "uk-input" %>
+      <%= select f, :kind, ["Pessoa Fisica": "individual", "Pessoa Juridica": "juridical" ], class: "uk-input" %>
     </div>
     <%= error_tag f, :kind %>
   </div>
