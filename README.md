@@ -4,42 +4,55 @@ Sistema para gestão e armazenamento de arquivos
 
 # Dependências
 
-	Elixir >= 1.6.4
-	Phoenix Framework >= 1.4
-	PostgreSQL >= 9.0
+Elixir >= 1.6.4
+Phoenix Framework >= 1.4
+PostgreSQL >= 9.0
 
-	Instalação Elixir: https://elixir-lang.org/install.html
-	Instalação Phoenix Framework: https://hexdocs.pm/phoenix/installation.html
+Instalação Elixir: https://elixir-lang.org/install.html
+Instalação Phoenix Framework: https://hexdocs.pm/phoenix/installation.html
 
 ## Atualizar Dependências
 
-	mix deps.get
-	cd assets && yarn && node node_modules/webpack/bin/webpack.js --mode development && cd ..
+```shell
+mix deps.get
+```
+```shell
+cd assets && yarn && yarn run webpack --mode development && cd ..
+```
 
 ## Banco de dados
 
-Alterar configurações de banco no arquivo /config/dev.exs:
-	 
-	 config :safedoc, Safedoc.Repo,
-		username:  "user",
-		password:  "password",
-		database:  "safedoc_dev",
-		hostname:  "localhost",
-		pool_size:  10
-	
+Remover `.sample` do arquivo `/config/dev.secret.exs.sample` e alterar as configurações de banco:
+
+```elixir
+config :safedoc, Safedoc.Repo,
+  username: "dbusername", # nome de usuário do banco
+  password: "dbpassword", # senha do banco
+  database:  "safedoc_dev",
+  hostname:  "localhost",
+  pool_size:  10
+```
+
 ## Criar Banco de Dados
 
-	mix ecto.create
+```shell
+mix ecto.create
+```
 
 ## Migrações Banco de Dados
 
-	mix ecto.migrate
+```shell
+mix ecto.migrate
+```
 
 ## Semear Banco de Dados
 
-	mix run priv/repo/seeds.exs
+```shell
+mix run priv/repo/seeds.exs
+```
 
 ## Iniciar Servidor
 
-	mix phx.server
-
+```shell
+mix phx.server
+```
