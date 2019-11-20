@@ -16,6 +16,7 @@ Instalação Phoenix Framework: https://hexdocs.pm/phoenix/installation.html
 ```shell
 mix deps.get
 ```
+
 ```shell
 cd assets && yarn && yarn run webpack --mode development && cd ..
 ```
