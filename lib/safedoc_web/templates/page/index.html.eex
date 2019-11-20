@@ -1,1 +1,3 @@
 <h1 class="uk-text-lead">Visão Geral</h1>
+
+<div id="svelte-app"></div>

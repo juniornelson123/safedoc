@@ -22,6 +22,13 @@ module.exports = (env, options) => ({
   module: {
     rules: [
       {
+        test: /\.svelte$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "svelte-loader"
+        }
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -29,7 +36,7 @@ module.exports = (env, options) => ({
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
           {

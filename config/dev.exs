@@ -68,8 +68,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :safedoc, Safedoc.Repo,
-  username: "mac",
-  password: "123456",
+  username: "pablohenriqdev",
+  password: "root",
   database: "safedoc_dev",
   hostname: "localhost",
   pool_size: 10
