@@ -17,8 +17,8 @@
     $value
   );
 
-  $isAngle: type-of($value) == "number" and
-    index("deg" "grad" "turn" "rad", unit($value));
+  $isAngle: type-of($value) == 'number' and
+    index('deg' 'grad' 'turn' 'rad', unit($value));
 
   @return $isKeyword or $isAngle;
 }
