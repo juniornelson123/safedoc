@@ -45,8 +45,8 @@ defmodule Safedoc.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:guardian, "~> 2.0"},
       {:argon2_elixir, "~> 2.0"},
-      {:edeliver, "~> 1.4.3"},
-      {:distillery, "~> 1.0"}
+      {:edeliver, "1.4.3"},
+      {:distillery, "2.1.1"}
 
     ]
   end
