@@ -4,16 +4,9 @@ BUILD_HOST="167.71.167.100"
 BUILD_USER="deploy"
 BUILD_AT="/home/deploy/app_build"
 
-GIT_CLEAN_PATHS="_build rel priv/static"
-
-STAGING_HOSTS="167.71.167.100"
-STAGING_USER="deploy"
-TEST_AT="/home/deploy/staging"
-
 PRODUCTION_HOSTS="167.71.167.100"
 PRODUCTION_USER="deploy"
 DELIVER_TO="/home/deploy/app_release"
-
 
 pre_erlang_get_and_update_deps() {
   local _prod_secret_path="/home/deploy/app_config/prod.secret.exs"
