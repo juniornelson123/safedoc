@@ -7,6 +7,8 @@
 
 #source ~/.zshrc
 nvm &>/dev/null
+echo "enter in assets"
+cd assets
 
 echo "Run yarn install"
 yarn install
@@ -16,6 +18,9 @@ echo "Remove old priv/static"
 
 echo "Compile assets"
 yarn deploy
+
+echo "exit in assets"
+cd ..
 
 echo "Create digest"
 MIX_ENV=prod mix phoenix.digest

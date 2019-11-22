@@ -1,12 +1,12 @@
 APP="safedoc"
 
 BUILD_HOST="167.71.167.100"
-BUILD_USER="root"
-BUILD_AT="/home/root/app_build"
+BUILD_USER="deploy"
+BUILD_AT="/home/deploy/app_build"
 
 PRODUCTION_HOSTS="167.71.167.100"
-PRODUCTION_USER="root"
-DELIVER_TO="/home/root/app_release"
+PRODUCTION_USER="deploy"
+DELIVER_TO="/home/deploy/app_release"
 
 RELEASE_DIR="${BUILD_AT}/rel/${APP}"
 USING_DISTILLERY=true
