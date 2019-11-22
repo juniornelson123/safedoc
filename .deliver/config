@@ -13,8 +13,15 @@ USING_DISTILLERY=true
 RELEASE_STORE_PATH="/home/${PRODUCTION_USER}/releases/"
 RELEASE_STORE="${BUILD_USER}@${BUILD_HOST}:${RELEASE_STORE_PATH}"
 
+
+
 # Compile assets for phoenix app
 pre_erlang_clean_compile() {
+  local _prod_secret_path="/home/deploy/app_config/prod.secret.exs"
+  __sync_remote "
+    ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
+  "
+
   status "Compiling assets locally:"
   # compile assets locally (see .deliver/production_assets.zsh)
   eval "$(pwd)/.deliver/production_assets.sh"
@@ -53,13 +60,4 @@ symlink_uploads(){
     [ ! -d $DELIVER_TO/$APP/uploads ] && mkdir -p $DELIVER_TO/$APP/uploads
     ln -sfn $DELIVER_TO/$APP/uploads $DELIVER_TO/$APP/lib/$APP-$RELEASE$VERSION/uploads
   "
-}
-
-pre_erlang_get_and_update_deps() {
-  local _prod_secret_path="/home/deploy/app_config/prod.secret.exs"
-  if [ "$TARGET_MIX_ENV" = "prod" ]; then
-    __sync_remote "
-      ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
-    "
-  fi
 }
