@@ -17,7 +17,7 @@ RELEASE_STORE="${BUILD_USER}@${BUILD_HOST}:${RELEASE_STORE_PATH}"
 pre_erlang_clean_compile() {
   status "Compiling assets locally:"
   # compile assets locally (see .deliver/production_assets.zsh)
-  eval "$(pwd)/.deliver/production_assets.zsh"
+  eval "$(pwd)/.deliver/production_assets.sh"
   # copy assets to remote host
   status "Copy assets to ${BUILD_USER}@${BUILD_HOST}:${BUILD_AT}"
   scp -r priv/static ${BUILD_USER}@${BUILD_HOST}:${BUILD_AT}/priv/static
