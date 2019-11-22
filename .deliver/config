@@ -8,20 +8,25 @@ PRODUCTION_HOSTS="167.71.167.100"
 PRODUCTION_USER="deploy"
 DELIVER_TO="/home/deploy/app_release"
 
-RELEASE_DIR="${BUILD_AT}/rel/${APP}"
-USING_DISTILLERY=true
-RELEASE_STORE_PATH="/home/${PRODUCTION_USER}/releases/"
-RELEASE_STORE="${BUILD_USER}@${BUILD_HOST}:${RELEASE_STORE_PATH}"
+# RELEASE_DIR="${BUILD_AT}/rel/${APP}"
+# USING_DISTILLERY=true
+# RELEASE_STORE_PATH="/home/${PRODUCTION_USER}/releases/"
+# RELEASE_STORE="${BUILD_USER}@${BUILD_HOST}:${RELEASE_STORE_PATH}"
 
 
+pre_erlang_get_and_update_deps() {
+  local _prod_secret_path="/home/deploy/app_config/prod.secret.exs"
+  if [ "$TARGET_MIX_ENV" = "prod" ]; then
+    __sync_remote "
+      ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
+    "
+  fi
+
+  #eval "$(pwd)/.deliver/digest.sh"
+}
 
 # Compile assets for phoenix app
 pre_erlang_clean_compile() {
-  local _prod_secret_path="/home/deploy/app_config/prod.secret.exs"
-  __sync_remote "
-    ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
-  "
-
   status "Compiling assets locally:"
   # compile assets locally (see .deliver/production_assets.zsh)
   eval "$(pwd)/.deliver/production_assets.sh"
@@ -29,35 +34,35 @@ pre_erlang_clean_compile() {
   status "Copy assets to ${BUILD_USER}@${BUILD_HOST}:${BUILD_AT}"
   scp -r priv/static ${BUILD_USER}@${BUILD_HOST}:${BUILD_AT}/priv/static
 
-  status "Creating releases directory if does not exists"
-  __sync_remote "
-  set -e
-  mkdir -p ${RELEASE_STORE_PATH}
-  "
+  # status "Creating releases directory if does not exists"
+  #__sync_remote "
+  #set -e
+  #mkdir -p ${RELEASE_STORE_PATH}
+  #"
 }
 
-pre_start_deployed_release() {
-  symlink_static
-  symlink_uploads
-}
+# pre_start_deployed_release() {
+#   symlink_static
+#   symlink_uploads
+# }
 
-# Symlink static assets from released app dir to the server
-symlink_static(){
-  status "Symlinking static assets path"
-  __sync_remote "
-    [ -f ~/.profile ] && source ~/.profile
-    set -e
-    ln -sfn $DELIVER_TO/$APP/lib/$APP-$RELEASE$VERSION/priv/static $DELIVER_TO/$APP/static
-  "
-}
+# # Symlink static assets from released app dir to the server
+# symlink_static(){
+#   status "Symlinking static assets path"
+#   __sync_remote "
+#     [ -f ~/.profile ] && source ~/.profile
+#     set -e
+#     ln -sfn $DELIVER_TO/$APP/lib/$APP-$RELEASE$VERSION/priv/static $DELIVER_TO/$APP/static
+#   "
+# }
 
-# Optional: Symlink server uploads folder to the released app dir
-symlink_uploads(){
-  status "Symlinking uploads path"
-  __sync_remote "
-    [ -f ~/.profile ] && source ~/.profile
-    set -e
-    [ ! -d $DELIVER_TO/$APP/uploads ] && mkdir -p $DELIVER_TO/$APP/uploads
-    ln -sfn $DELIVER_TO/$APP/uploads $DELIVER_TO/$APP/lib/$APP-$RELEASE$VERSION/uploads
-  "
-}
+# # Optional: Symlink server uploads folder to the released app dir
+# symlink_uploads(){
+#   status "Symlinking uploads path"
+#   __sync_remote "
+#     [ -f ~/.profile ] && source ~/.profile
+#     set -e
+#     [ ! -d $DELIVER_TO/$APP/uploads ] && mkdir -p $DELIVER_TO/$APP/uploads
+#     ln -sfn $DELIVER_TO/$APP/uploads $DELIVER_TO/$APP/lib/$APP-$RELEASE$VERSION/uploads
+#   "
+# }
