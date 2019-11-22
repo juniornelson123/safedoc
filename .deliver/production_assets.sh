@@ -5,7 +5,7 @@
 
 #!/usr/bin/env zsh
 
-source ~/.zshrc
+#source ~/.zshrc
 nvm &>/dev/null
 
 echo "Run yarn install"
@@ -15,7 +15,7 @@ echo "Remove old priv/static"
 [ -d priv/static ] && rm -rf priv/static
 
 echo "Compile assets"
-npm run deploy
+yarn deploy
 
 echo "Create digest"
 MIX_ENV=prod mix phoenix.digest
