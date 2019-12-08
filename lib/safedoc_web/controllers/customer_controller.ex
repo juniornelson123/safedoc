@@ -12,7 +12,7 @@ defmodule SafedocWeb.CustomerController do
   end
 
   def new(conn, _params) do
-    changeset = Account.change_customer(%Customer{}) |> Ecto.Changeset.put_assoc(:user, %Account.User{}) 
+    changeset = Account.change_customer(%Customer{}) |> Ecto.Changeset.put_assoc(:user, %Account.User{})
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -35,12 +35,11 @@ defmodule SafedocWeb.CustomerController do
 
   def edit(conn, %{"id" => id}) do
     customer = Account.get_customer!(id) |> Repo.preload(:user)
-    changeset = Account.change_customer(customer) 
+    changeset = Account.change_customer(customer)
     render(conn, "edit.html", customer: customer, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "customer" => customer_params}) do
-    IO.inspect customer_params
     customer = Account.get_customer!(id)  |> Repo.preload(:user)
 
     case Account.update_customer(customer, customer_params) do

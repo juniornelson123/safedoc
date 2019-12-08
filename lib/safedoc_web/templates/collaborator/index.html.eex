@@ -1,28 +1,34 @@
-<h1>Listing Collaborators</h1>
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Colaboradores</h1>
+  <span>
+    <%= link to: Routes.collaborator_path(@conn, :new), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+      <span uk-icon="plus" class="uk-margin-small-right"></span>
+      Novo
+    <% end %>
+  </span>
+</div>
 
-<table>
+<table class="uk-table uk-table-hover uk-table-center uk-table-middle uk-table-divider uk-table-separate" cellspacing="10">
   <thead>
     <tr>
-      <th>Office</th>
-      <th>Status</th>
-
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Cargo</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for collaborator <- @collaborators do %>
+  <%= for collaborator <- @collaborators do %>
     <tr>
+      <td><%= collaborator.id %></td>
+      <td><%= if collaborator.user, do: collaborator.user.name, else: "-"  %></td>
       <td><%= collaborator.office %></td>
-      <td><%= collaborator.status %></td>
-
       <td>
-        <span><%= link "Show", to: Routes.collaborator_path(@conn, :show, collaborator) %></span>
-        <span><%= link "Edit", to: Routes.collaborator_path(@conn, :edit, collaborator) %></span>
-        <span><%= link "Delete", to: Routes.collaborator_path(@conn, :delete, collaborator), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Detalhes", to: Routes.collaborator_path(@conn, :show, collaborator), class: "uk-button uk-button-primary" %></span>
+        <span><%= link "Editar", to: Routes.collaborator_path(@conn, :edit, collaborator), class: "uk-button uk-button-secondary" %></span>
+        <span><%= link "Deletar", to: Routes.collaborator_path(@conn, :delete, collaborator), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
       </td>
     </tr>
-<% end %>
+  <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Collaborator", to: Routes.collaborator_path(@conn, :new) %></span>

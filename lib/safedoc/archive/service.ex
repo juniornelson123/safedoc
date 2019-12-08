@@ -4,9 +4,9 @@ defmodule Safedoc.Archive.Service do
 
   schema "services" do
     field :status, :string
-    field :document_id, :id
-    field :step_id, :id
-    field :collaborator_id, :id
+    field :date, :utc_datetime
+    belongs_to :step, Safedoc.Setting.Step
+    belongs_to :collaborator, Safedoc.Archive.Collaborator
 
     timestamps()
   end
@@ -14,7 +14,7 @@ defmodule Safedoc.Archive.Service do
   @doc false
   def changeset(service, attrs) do
     service
-    |> cast(attrs, [:status])
+    |> cast(attrs, [:status, :date, :step_id, :collaborator_id])
     |> validate_required([:status])
   end
 end

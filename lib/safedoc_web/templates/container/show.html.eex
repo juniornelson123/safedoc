@@ -1,18 +1,8 @@
-<h1>Show Container</h1>
-
-<ul>
-
-  <li>
-    <strong>Code:</strong>
-    <%= @container.code %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @container.description %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.container_path(@conn, :edit, @container) %></span>
-<span><%= link "Back", to: Routes.container_path(@conn, :index) %></span>
+<div class="uk-text-center" uk-grid>
+  <div class="uk-width-1-2">
+    <div class="uk-card uk-card-body">
+      <img src="data:image/png;charset=utf-8;base64,<%= @qrcode %>" />
+      <span class="uk-margin-small-top"><%= @container.code %></span>
+    </div>
+  </div>
+</div>

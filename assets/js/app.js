@@ -23,13 +23,14 @@ UIkit.use(Icons);
 
 // components can be called from the imported UIkit reference
 // UIkit.notification('Hello world.');
-
-document.getElementById("customer_kind").addEventListener("change", (e) => {
-  if(e.target.value == "juridical"){
-    document.getElementById("juridical").classList.remove("isHidden");
-    document.getElementById("individual").classList.add("isHidden");
-  }else {
-    document.getElementById("juridical").classList.add("isHidden");
-    document.getElementById("individual").classList.remove("isHidden");
-  }
-});
+if(document.getElementById("customer_kind")){
+  document.getElementById("customer_kind").addEventListener("change", (e) => {
+    if(e.target.value == "juridical"){
+      document.getElementById("juridical").classList.remove("isHidden");
+      document.getElementById("individual").classList.add("isHidden");
+    }else {
+      document.getElementById("juridical").classList.add("isHidden");
+      document.getElementById("individual").classList.remove("isHidden");
+    }
+  });
+}

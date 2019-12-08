@@ -1,0 +1,33 @@
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Ramo de atividade</h1>
+  <span>
+    <%= link to: Routes.activity_path(@conn, :new), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+      <span uk-icon="plus" class="uk-margin-small-right"></span>
+      Novo
+    <% end %>
+  </span>
+</div>
+
+<table class="uk-table uk-table-hover uk-table-center uk-table-middle uk-table-divider uk-table-separate" cellspacing="10">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for activity <- @activities do %>
+    <tr>
+      <td><%= activity.id %></td>
+      <td><%= activity.name %></td>
+      <td>
+        <span><%= link "Indexadores", to: Routes.activity_indexer_path(@conn, :index, activity), class: "uk-button uk-button-primary" %></span>
+        <span><%= link "Detalhes", to: Routes.activity_path(@conn, :show, activity), class: "uk-button uk-button-primary" %></span>
+        <span><%= link "Editar", to: Routes.activity_path(@conn, :edit, activity), class: "uk-button uk-button-secondary" %></span>
+        <span><%= link "Deletar", to: Routes.activity_path(@conn, :delete, activity), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

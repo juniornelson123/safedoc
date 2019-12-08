@@ -5,7 +5,7 @@ defmodule Safedoc.Account.Collaborator do
   schema "collaborators" do
     field :office, :string
     field :status, :string
-    field :user_id, :id
+    belongs_to :user, Safedoc.Account.User
 
     timestamps()
   end
@@ -14,6 +14,7 @@ defmodule Safedoc.Account.Collaborator do
   def changeset(collaborator, attrs) do
     collaborator
     |> cast(attrs, [:office, :status])
-    |> validate_required([:office, :status])
+    |> cast_assoc(:user)
+    |> validate_required([:office])
   end
 end

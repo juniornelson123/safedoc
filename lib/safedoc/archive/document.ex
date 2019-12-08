@@ -4,9 +4,9 @@ defmodule Safedoc.Archive.Document do
 
   schema "documents" do
     field :code, :string
-    field :customer_id, :string
     field :status, :string
-    field :container_id, :id
+    belongs_to :customer, Safedoc.Archive.Customer
+    belongs_to :container, Safedoc.Archive.Container
 
     timestamps()
   end
@@ -14,7 +14,7 @@ defmodule Safedoc.Archive.Document do
   @doc false
   def changeset(document, attrs) do
     document
-    |> cast(attrs, [:code, :customer_id, :status])
-    |> validate_required([:code, :customer_id, :status])
+    |> cast(attrs, [:code, :container_id, :customer_id, :status])
+    |> validate_required([:code, :status])
   end
 end

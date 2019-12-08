@@ -7,7 +7,8 @@ defmodule Safedoc.Account.User do
     field :name, :string
     field :password, :string
     has_one :customer, Safedoc.Account.Customer
-    
+    has_one :collaborator, Safedoc.Account.Collaborator
+
     timestamps()
   end
 

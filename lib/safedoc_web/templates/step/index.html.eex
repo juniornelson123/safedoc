@@ -1,28 +1,32 @@
-<h1>Listing Steps</h1>
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Status</h1>
+  <span>
+    <%= link to: Routes.step_path(@conn, :new), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+      <span uk-icon="plus" class="uk-margin-small-right"></span>
+      Novo
+    <% end %>
+  </span>
+</div>
 
-<table>
+<table class="uk-table uk-table-hover uk-table-center uk-table-middle uk-table-divider uk-table-separate" cellspacing="10">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-
+      <th>ID</th>
+      <th>Nome</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for step <- @steps do %>
+  <%= for step <- @steps do %>
     <tr>
+      <td><%= step.id %></td>
       <td><%= step.name %></td>
-      <td><%= step.position %></td>
-
       <td>
-        <span><%= link "Show", to: Routes.step_path(@conn, :show, step) %></span>
-        <span><%= link "Edit", to: Routes.step_path(@conn, :edit, step) %></span>
-        <span><%= link "Delete", to: Routes.step_path(@conn, :delete, step), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Detalhes", to: Routes.step_path(@conn, :show, step), class: "uk-button uk-button-primary" %></span>
+        <span><%= link "Editar", to: Routes.step_path(@conn, :edit, step), class: "uk-button uk-button-secondary" %></span>
+        <span><%= link "Deletar", to: Routes.step_path(@conn, :delete, step), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
       </td>
     </tr>
-<% end %>
+  <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Step", to: Routes.step_path(@conn, :new) %></span>

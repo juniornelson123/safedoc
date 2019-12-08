@@ -1,0 +1,18 @@
+<%= form_for @changeset, @action, [class: "uk-form-stacked"], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+  <div class="uk-margin">
+    <%= label f, :name, "Nome",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :name, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :name %>
+  </div>
+  <div>
+    <span><%= link "Cancelar", to: Routes.activity_path(@conn, :index), class: "uk-button uk-button-danger" %></span>
+    <%= submit "Salvar", class: "uk-button uk-button-primary" %>
+  </div>
+<% end %>

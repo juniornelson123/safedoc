@@ -13,6 +13,6 @@ defmodule Safedoc.Setting.Step do
   def changeset(step, attrs) do
     step
     |> cast(attrs, [:name, :position])
-    |> validate_required([:name, :position])
+    |> validate_required([:name])
   end
 end

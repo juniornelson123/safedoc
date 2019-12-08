@@ -1,0 +1,39 @@
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Indexadores</h1>
+  <span class="uk-flex">
+    <span>
+      <%= link to: Routes.activity_path(@conn, :index), class: "uk-button uk-button-danger uk-flex uk-flex-middle uk-margin-small-right" do %>
+        Voltar
+      <% end %>
+    </span>
+    <span>
+      <%= link to: Routes.activity_indexer_path(@conn, :new, @activity), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+        <span uk-icon="plus" class="uk-margin-small-right"></span>
+        Novo
+      <% end %>
+    </span>
+  </span>
+</div>
+
+<table class="uk-table uk-table-hover uk-table-center uk-table-middle uk-table-divider uk-table-separate" cellspacing="10">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for indexer <- @indexers do %>
+    <tr>
+      <td><%= indexer.id %></td>
+      <td><%= indexer.name %></td>
+      <td>
+        <span><%= link "Detalhes", to: Routes.activity_indexer_path(@conn, :show, @activity, indexer), class: "uk-button uk-button-primary" %></span>
+        <span><%= link "Editar", to: Routes.activity_indexer_path(@conn, :edit, @activity, indexer), class: "uk-button uk-button-secondary" %></span>
+        <span><%= link "Deletar", to: Routes.activity_indexer_path(@conn, :delete, @activity, indexer), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

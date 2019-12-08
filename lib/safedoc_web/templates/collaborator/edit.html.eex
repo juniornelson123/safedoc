@@ -1,5 +1,3 @@
-<h1>Edit Collaborator</h1>
+<h1 class="uk-text-lead">Editar Colaborador</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.collaborator_path(@conn, :update, @collaborator)) %>
-
-<span><%= link "Back", to: Routes.collaborator_path(@conn, :index) %></span>

@@ -21,6 +21,22 @@
     </div>
     <%= error_tag f, :amount %>
   </div>
+
+  <div class="uk-margin">
+    <%= label f, :prefix, "Prefixo da etiqueta",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :prefix, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :prefix %>
+  </div>
+  
+  <div class="uk-margin">
+    <%= label f, :sufix, "Sufixo da etiqueta",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :sufix, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :sufix %>
+  </div>
   <div>
     <span><%= link "Cancelar", to: Routes.category_path(@conn, :index), class: "uk-button uk-button-danger" %></span>
     <%= submit "Salvar", class: "uk-button uk-button-primary" %>

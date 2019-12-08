@@ -4,7 +4,7 @@ defmodule Safedoc.Location.City do
 
   schema "cities" do
     field :name, :string
-    field :state_id, :id
+    belongs_to :state, Safedoc.Location.State
 
     timestamps()
   end
@@ -12,7 +12,7 @@ defmodule Safedoc.Location.City do
   @doc false
   def changeset(city, attrs) do
     city
-    |> cast(attrs, [:name])
+    |> cast(attrs, [:name, :state_id])
     |> validate_required([:name])
   end
 end

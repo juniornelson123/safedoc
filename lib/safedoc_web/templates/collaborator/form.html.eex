@@ -1,19 +1,40 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [class: "uk-form-stacked"], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-
-  <%= label f, :office %>
-  <%= text_input f, :office %>
-  <%= error_tag f, :office %>
-
-  <%= label f, :status %>
-  <%= text_input f, :status %>
-  <%= error_tag f, :status %>
-
+  <%= inputs_for f, :user, fn fp -> %>
+    <div class="uk-margin">
+      <%= label fp, :name, "Nome",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input fp, :name, class: "uk-input" %>
+      </div>
+      <%= error_tag fp, :name %>
+    </div>
+    <div class="uk-margin">
+      <%= label fp, :email, "Email",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input fp, :email, class: "uk-input" %>
+      </div>
+      <%= error_tag fp, :email %>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-form-controls">
+        <%= hidden_input fp, :password, value: "12345678", class: "uk-input" %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="uk-margin">
+    <%= label f, :office, "Cargo", class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :office, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :office %>
+  </div>
   <div>
-    <%= submit "Save" %>
+    <span><%= link "Cancelar", to: Routes.collaborator_path(@conn, :index), class: "uk-button uk-button-danger" %></span>
+    <%= submit "Salvar", class: "uk-button uk-button-primary" %>
   </div>
 <% end %>

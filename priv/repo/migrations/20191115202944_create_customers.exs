@@ -14,6 +14,7 @@ defmodule Safedoc.Repo.Migrations.CreateCustomers do
       add :reason_social, :string
       add :fantasy_name, :string
       add :user_id, references(:users, on_delete: :nothing)
+      add :activity_id, references(:activities, on_delete: :nothing)
 
       timestamps()
     end

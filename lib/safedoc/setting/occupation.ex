@@ -6,8 +6,8 @@ defmodule Safedoc.Setting.Occupation do
     field :date_end, :naive_datetime
     field :date_start, :naive_datetime
     field :status, :string
-    field :step_id, :id
-    field :collaborator_id, :id
+    belongs_to :step, Safedoc.Setting.Step
+    belongs_to :collaborator, Safedoc.Account.Collaborator
 
     timestamps()
   end
@@ -15,7 +15,7 @@ defmodule Safedoc.Setting.Occupation do
   @doc false
   def changeset(occupation, attrs) do
     occupation
-    |> cast(attrs, [:status, :date_start, :date_end])
+    |> cast(attrs, [:status, :date_start, :date_end, :step_id, :collaborator_id])
     |> validate_required([:status, :date_start, :date_end])
   end
 end

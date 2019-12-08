@@ -19,7 +19,7 @@ defmodule SafedocWeb.StepController do
       {:ok, step} ->
         conn
         |> put_flash(:info, "Step created successfully.")
-        |> redirect(to: Routes.step_path(conn, :show, step))
+        |> redirect(to: Routes.step_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule SafedocWeb.StepController do
       {:ok, step} ->
         conn
         |> put_flash(:info, "Step updated successfully.")
-        |> redirect(to: Routes.step_path(conn, :show, step))
+        |> redirect(to: Routes.step_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", step: step, changeset: changeset)

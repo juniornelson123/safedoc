@@ -1,0 +1,8 @@
+<h1>Show Containers service</h1>
+
+<ul>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.containers_service_path(@conn, :edit, @containers_service) %></span>
+<span><%= link "Back", to: Routes.containers_service_path(@conn, :index) %></span>

@@ -1,0 +1,24 @@
+<h1>Listing Containers services</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for containers_service <- @containers_services do %>
+    <tr>
+
+      <td>
+        <span><%= link "Show", to: Routes.containers_service_path(@conn, :show, containers_service) %></span>
+        <span><%= link "Edit", to: Routes.containers_service_path(@conn, :edit, containers_service) %></span>
+        <span><%= link "Delete", to: Routes.containers_service_path(@conn, :delete, containers_service), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Containers service", to: Routes.containers_service_path(@conn, :new) %></span>

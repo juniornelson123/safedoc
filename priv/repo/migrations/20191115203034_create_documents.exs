@@ -4,7 +4,7 @@ defmodule Safedoc.Repo.Migrations.CreateDocuments do
   def change do
     create table(:documents) do
       add :code, :string
-      add :customer_id, :text
+      add :customer_id, references(:customers, on_delete: :nothing)
       add :status, :string
       add :container_id, references(:containers, on_delete: :nothing)
 

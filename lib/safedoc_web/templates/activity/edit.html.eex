@@ -1,0 +1,3 @@
+<h1 class="uk-text-lead">Editar Ramo</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.activity_path(@conn, :update, @activity)) %>

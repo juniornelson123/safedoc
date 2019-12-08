@@ -35,7 +35,7 @@
       </nav>
     </header>  
     <div class="tm-sidebar-left uk-visible@m">
-      <ul class="uk-list">
+      <ul class="uk-list" uk-accordion>
         <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path == "/", do: "isActive"%>'>
           <span class="uk-margin-medium-right" uk-icon="home"></span>
           <%= link "Visão Geral", to: Routes.page_path(@conn, :index)%>
@@ -48,6 +48,31 @@
           <span class="uk-margin-medium-right" uk-icon="cog"></span>
           <%= link "Categorias", to: Routes.category_path(@conn, :index)%>
         </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/documentos", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <%= link "Documentos", to: Routes.document_path(@conn, :index)%>
+        </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/recipientes", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <%= link "Etiquetas", to: Routes.container_path(@conn, :index)%>
+        </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/colaboradores", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <%= link "Colaboradores", to: Routes.collaborator_path(@conn, :index)%>
+        </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/atividades", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <%= link "Ramos de Atividade", to: Routes.activity_path(@conn, :index)%>
+        </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/passos", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <%= link "Status", to: Routes.step_path(@conn, :index)%>
+        </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/servicos", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <%= link "Serviços (Em breve)", to: Routes.service_path(@conn, :index)%>
+        </li>
+        
       </ul>
     </div>
     <div class="tm-main uk-section">

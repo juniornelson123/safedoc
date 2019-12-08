@@ -1,28 +1,34 @@
-<h1>Listing Containers</h1>
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Etiquetas</h1>
+  <span>
+    <%= link to: Routes.container_path(@conn, :new), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+      <span uk-icon="plus" class="uk-margin-small-right"></span>
+      Novo
+    <% end %>
+  </span>
+</div>
 
-<table>
+<table class="uk-table uk-table-hover uk-table-center uk-table-middle uk-table-divider uk-table-separate" cellspacing="10">
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Description</th>
-
+      <th>ID</th>
+      <th>Código</th>
+      <th>Tipo</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for container <- @containers do %>
+  <%= for container <- @containers do %>
     <tr>
+      <td><%= container.id %></td>
       <td><%= container.code %></td>
-      <td><%= container.description %></td>
-
+      <td><%= container.category.name %></td>
       <td>
-        <span><%= link "Show", to: Routes.container_path(@conn, :show, container) %></span>
-        <span><%= link "Edit", to: Routes.container_path(@conn, :edit, container) %></span>
-        <span><%= link "Delete", to: Routes.container_path(@conn, :delete, container), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Imprimir", to: Routes.container_path(@conn, :show, container), class: "uk-button uk-button-primary", target: "_blank" %></span>
+        <span><%= link "Editar", to: Routes.container_path(@conn, :edit, container), class: "uk-button uk-button-secondary" %></span>
+        <span><%= link "Deletar", to: Routes.container_path(@conn, :delete, container), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
       </td>
     </tr>
-<% end %>
+  <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Container", to: Routes.container_path(@conn, :new) %></span>

@@ -5,6 +5,8 @@ defmodule Safedoc.Repo.Migrations.CreateCategories do
     create table(:categories) do
       add :name, :string
       add :amount, :integer
+      add :prefix, :string
+      add :sufix, :string
 
       timestamps()
     end

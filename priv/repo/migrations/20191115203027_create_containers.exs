@@ -6,6 +6,7 @@ defmodule Safedoc.Repo.Migrations.CreateContainers do
       add :code, :string
       add :description, :text
       add :container_id, references(:containers, on_delete: :nothing)
+      add :category_id, references(:categories, on_delete: :nothing)
 
       timestamps()
     end

@@ -8,8 +8,8 @@ defmodule Safedoc.Location.Address do
     field :district, :string
     field :number, :integer
     field :street, :string
-    field :customer_id, :id
-    field :city_id, :id
+    belongs_to :customer_id, Safedoc.Account.Customer
+    belongs_to :city_id, Safedoc.Location.City
 
     timestamps()
   end
@@ -17,7 +17,7 @@ defmodule Safedoc.Location.Address do
   @doc false
   def changeset(address, attrs) do
     address
-    |> cast(attrs, [:cep, :street, :number, :district, :complement])
+    |> cast(attrs, [:cep, :street, :number, :district, :complement, :customer_id, :city_id])
     |> validate_required([:cep, :street, :number, :district, :complement])
   end
 end

@@ -42,6 +42,9 @@ defmodule SafedocWeb.Router do
     resources "/servicos", ServiceController
     resources "/funcoes", OccupationController
     resources "/passos", StepController
+    resources "/atividades", ActivityController do
+      resources "/indexadores", IndexerController
+    end
   end
 
   # Other scopes may use custom stacks.

@@ -5,7 +5,10 @@ defmodule Safedoc.Archive.Container do
   schema "containers" do
     field :code, :string
     field :description, :string
-    field :container_id, :id
+    belongs_to :category, Safedoc.Archive.Category
+    belongs_to :container, Safedoc.Archive.Container
+    has_many :containers, Safedoc.Archive.Container
+    has_many :documents, Safedoc.Archive.Document
 
     timestamps()
   end
@@ -13,7 +16,7 @@ defmodule Safedoc.Archive.Container do
   @doc false
   def changeset(container, attrs) do
     container
-    |> cast(attrs, [:code, :description])
-    |> validate_required([:code, :description])
+    |> cast(attrs, [:code, :description, :container_id, :category_id])
+    |> validate_required([])
   end
 end

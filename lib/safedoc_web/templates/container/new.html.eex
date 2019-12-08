@@ -1,5 +1,3 @@
-<h1>New Container</h1>
+<h1>Novas Etiquetas</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.container_path(@conn, :create)) %>
-
-<span><%= link "Back", to: Routes.container_path(@conn, :index) %></span>
