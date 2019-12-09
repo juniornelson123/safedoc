@@ -1,0 +1,8 @@
+<h1>Show Indexer data</h1>
+
+<ul>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.indexer_data_path(@conn, :edit, @indexer_data) %></span>
+<span><%= link "Back", to: Routes.indexer_data_path(@conn, :index) %></span>

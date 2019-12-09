@@ -416,6 +416,20 @@ defmodule Safedoc.Setting do
       [%IndexerData{}, ...]
 
   """
+  def list_indexer_datas(document_id) do
+    query = from i in IndexerData, where: i.document_id == ^document_id, order_by: [desc: i.inserted_at]
+    Repo.all(query)
+  end
+
+  @doc """
+  Returns the list of indexer_datas.
+
+  ## Examples
+
+      iex> list_indexer_datas()
+      [%IndexerData{}, ...]
+
+  """
   def list_indexer_datas do
     Repo.all(IndexerData)
   end

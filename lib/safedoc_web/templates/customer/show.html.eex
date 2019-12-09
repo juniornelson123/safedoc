@@ -18,6 +18,14 @@
         <span>Pessoa Juridica</span>
       <% end %>  
     </div>
+    <div class="uk-flex uk-flex-between uk-margin-medium-top">
+      <span class="uk-text-bold">Ramo de atividade: </span>
+      <%= if @customer.activity != nil do %>
+        <span><%= @customer.activity.name %></span>
+      <% else %>
+        <span> - </span>
+      <% end %>
+    </div>
     <%= if @customer.kind == "juridical" do %>
       <div class="uk-flex uk-flex-between uk-margin-medium-top">
         <span class="uk-text-bold">Nome Fantasia: </span>

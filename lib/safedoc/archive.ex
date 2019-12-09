@@ -209,6 +209,35 @@ defmodule Safedoc.Archive do
       [%Document{}, ...]
 
   """
+  def list_containers_documents() do
+    # query = from c in Container, where: d.customer_id == ^customer_id, order_by: [desc: d.inserted_at]
+    query = from c in Container, join: category in Category, on: c.category_id == category.id, where: category.name == "Documento"
+    Repo.all(query)
+  end
+
+  @doc """
+  Returns the list of documents.
+
+  ## Examples
+
+      iex> list_documents()
+      [%Document{}, ...]
+
+  """
+  def list_documents(customer_id) do
+    query = from d in Document, where: d.customer_id == ^customer_id, order_by: [desc: d.inserted_at]
+    Repo.all(query)
+  end
+
+  @doc """
+  Returns the list of documents.
+
+  ## Examples
+
+      iex> list_documents()
+      [%Document{}, ...]
+
+  """
   def list_documents do
     Repo.all(Document)
   end

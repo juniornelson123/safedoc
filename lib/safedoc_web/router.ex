@@ -37,8 +37,11 @@ defmodule SafedocWeb.Router do
     resources "/categorias", CategoryController
     resources "/colaboradores", CollaboratorController
     resources "/recipientes", ContainerController
-    resources "/clientes", CustomerController
-    resources "/documentos", DocumentController
+    resources "/clientes", CustomerController do
+      resources "/documentos", Customer.DocumentController do
+        resources "/indexadores", Customer.Document.IndexerDataController
+      end
+    end
     resources "/servicos", ServiceController
     resources "/funcoes", OccupationController
     resources "/passos", StepController

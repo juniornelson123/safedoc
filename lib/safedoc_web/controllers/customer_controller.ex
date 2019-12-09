@@ -7,7 +7,7 @@ defmodule SafedocWeb.CustomerController do
   alias Safedoc.Account.User
 
   def index(conn, _params) do
-    customers = Account.list_customers() |> Repo.preload([:user])
+    customers = Account.list_customers() |> Repo.preload([:user, :activity])
     render(conn, "index.html", customers: customers)
   end
 
@@ -29,7 +29,7 @@ defmodule SafedocWeb.CustomerController do
   end
 
   def show(conn, %{"id" => id}) do
-    customer = Account.get_customer!(id) |> Repo.preload([:user])
+    customer = Account.get_customer!(id) |> Repo.preload([:user, :activity])
     render(conn, "show.html", customer: customer)
   end
 

@@ -1,0 +1,28 @@
+<%= form_for @conn, @action, [as: :indexer_data, method: "post", class: "uk-form-stacked"], fn f -> %>
+
+  <%= if @customer.activity do %>
+    <%= for {indexer, inx} <-  Enum.with_index(@customer.activity.indexers) do %>
+      <div class="uk-margin">
+        <label for="indexer_data[<%= inx %>][name]"><%= indexer.name %></label>
+        <div class="uk-form-controls">
+          <input name="indexer_data[<%= inx %>][name]" value="" class= "uk-input">
+        </div>
+      </div>
+      <div class="uk-margin">
+        <div class="uk-form-controls">
+          <input name="indexer_data[<%= inx %>][indexer_id]" type="hidden" value="<%= indexer.id%>">
+        </div>
+      </div>
+      <div class="uk-margin">
+        <div class="uk-form-controls">
+          <input name="indexer_data[<%= inx %>][document_id]" type="hidden" value="<%= @document.id%>">
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div>
+    <span><%= link "Cancelar", to: Routes.customer_document_indexer_data_path(@conn, :index, @customer, @document), class: "uk-button uk-button-danger" %></span>
+    <%= submit "Salvar", class: "uk-button uk-button-primary" %>
+  </div>
+<% end %>

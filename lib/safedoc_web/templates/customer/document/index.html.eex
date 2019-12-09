@@ -1,0 +1,38 @@
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Documentos</h1>
+  <span class="uk-flex">
+    <span>
+      <%= link to: Routes.customer_path(@conn, :index), class: "uk-button uk-button-primary uk-flex uk-flex-middle uk-margin-small-right" do %>
+        <span uk-icon="arrow-left" class="uk-margin-small-right"></span>
+        Voltar
+      <% end %>
+    </span> 
+    <span>
+      <%= link to: Routes.customer_document_path(@conn, :new, @customer), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+        <span uk-icon="plus" class="uk-margin-small-right"></span>
+        Novo
+      <% end %>
+    </span> 
+  </span>
+</div>
+
+<table class="uk-table uk-table-hover uk-table-center uk-table-middle uk-table-divider uk-table-separate" cellspacing="10">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for document <- @documents do %>
+    <tr>
+      <td><%= document.id %></td>
+      <td>
+        <span><%= link "Indexadores", to: Routes.customer_document_indexer_data_path(@conn, :index, @customer, document), class: "uk-button uk-button-primary" %></span>
+        <span><%= link "Editar", to: Routes.customer_document_path(@conn, :edit, @customer, document), class: "uk-button uk-button-secondary" %></span>
+        <span><%= link "Deletar", to: Routes.customer_document_path(@conn, :delete, @customer, document), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

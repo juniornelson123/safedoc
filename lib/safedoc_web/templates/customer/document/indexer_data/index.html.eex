@@ -1,0 +1,38 @@
+<div class="uk-flex uk-flex-between">
+  <h1 class="uk-text-lead">Indexadores</h1>
+  <span class="uk-flex">
+    <span>
+      <%= link to: Routes.customer_document_path(@conn, :index, @customer), class: "uk-button uk-button-primary uk-flex uk-flex-middle uk-margin-small-right" do %>
+        <span uk-icon="arrow-left" class="uk-margin-small-right"></span>
+        Voltar
+      <% end %>
+    </span>
+    <%= if length(@document.indexers_data) > 0 do %>
+      <span>
+        <%= link to: Routes.customer_document_indexer_data_path(@conn, :edit, @customer, @document, @document), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+          <span uk-icon="pencil" class="uk-margin-small-right"></span>
+          Editar
+        <% end %>
+      </span>
+    <% else %>
+      <span>
+        <%= link to: Routes.customer_document_indexer_data_path(@conn, :new, @customer, @document), class: "uk-button uk-button-primary uk-flex uk-flex-middle" do %>
+          <span uk-icon="plus" class="uk-margin-small-right"></span>
+          Cadastrar
+        <% end %>
+      </span>  
+    <% end %>  
+  </span>
+</div>
+
+<div class="uk-section uk-section-default uk-padding">
+  <div class="uk-container">
+    <%= for indexer <- @indexer_datas do %>
+      <div class="uk-flex uk-flex-between uk-margin-medium-top">
+        <span class="uk-text-bold"><%= indexer.indexer.name %>: </span>
+        <span><%= indexer.name %></span>
+      </div>
+    <% end %>
+  </div>
+</div>
+

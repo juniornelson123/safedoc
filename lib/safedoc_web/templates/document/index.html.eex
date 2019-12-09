@@ -18,13 +18,13 @@
       <td><%= document.status %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.document_path(@conn, :show, document) %></span>
-        <span><%= link "Edit", to: Routes.document_path(@conn, :edit, document) %></span>
-        <span><%= link "Delete", to: Routes.document_path(@conn, :delete, document), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Show", to: Routes.customer_document_path(@conn, :show, @customer, document) %></span>
+        <span><%= link "Edit", to: Routes.customer_document_path(@conn, :edit, @customer, document) %></span>
+        <span><%= link "Delete", to: Routes.customer_document_path(@conn, :delete, @customer, document), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Document", to: Routes.document_path(@conn, :new) %></span>
+<span><%= link "New Document", to: Routes.customer_document_path(@conn, :new, @customer) %></span>

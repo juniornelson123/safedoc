@@ -14,13 +14,14 @@ defmodule Safedoc.Account.Customer do
     field :state_registration, :string
     field :status, :string
     belongs_to :user, Safedoc.Account.User
+    belongs_to :activity, Safedoc.Setting.Activity
     timestamps()
   end
 
   @doc false
   def changeset(customer, attrs) do
     customer
-    |> cast(attrs, [:code, :kind, :status, :cpf, :rg, :state_registration, :municipal_registration, :cnpj, :reason_social, :fantasy_name])
+    |> cast(attrs, [:code, :kind, :status, :cpf, :rg, :state_registration, :municipal_registration, :cnpj, :reason_social, :fantasy_name, :activity_id])
     |> cast_assoc(:user)
     # |> validate_required([:code, :kind, :status, :cpf, :rg, :state_registration, :municipal_registration, :cnpj, :reason_social, :fantasy_name])
     |> unique_constraint(:cpf)

@@ -11,6 +11,13 @@
     </div>
     <%= error_tag f, :kind %>
   </div>
+  <div class="uk-margin">
+    <%= label f, :activity_id, "Tipo",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= select f, :activity_id, activities, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :activity_id %>
+  </div>
   <div id="individual">
     <%= inputs_for f, :user, fn fp -> %>
       <div class="uk-margin">

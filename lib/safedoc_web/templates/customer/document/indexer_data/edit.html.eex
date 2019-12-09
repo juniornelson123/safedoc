@@ -1,0 +1,3 @@
+<h1 class="uk-text-lead">Cadastrar Indexadores</h1>
+
+<%= render "form_edit.html", Map.put(assigns, :action, Routes.customer_document_indexer_data_path(@conn, :update, @customer, @document, @document)) %>

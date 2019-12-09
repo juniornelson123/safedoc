@@ -7,6 +7,7 @@ defmodule Safedoc.Archive.Document do
     field :status, :string
     belongs_to :customer, Safedoc.Archive.Customer
     belongs_to :container, Safedoc.Archive.Container
+    has_many :indexers_data, Safedoc.Setting.IndexerData
 
     timestamps()
   end
@@ -15,6 +16,6 @@ defmodule Safedoc.Archive.Document do
   def changeset(document, attrs) do
     document
     |> cast(attrs, [:code, :container_id, :customer_id, :status])
-    |> validate_required([:code, :status])
+    |> validate_required([:code])
   end
 end

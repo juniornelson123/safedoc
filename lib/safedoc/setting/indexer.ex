@@ -5,6 +5,7 @@ defmodule Safedoc.Setting.Indexer do
   schema "indexers" do
     field :name, :string
     belongs_to :activity, Safedoc.Setting.Activity
+    has_many :indexers_data, Safedoc.Setting.IndexerData
 
     timestamps()
   end

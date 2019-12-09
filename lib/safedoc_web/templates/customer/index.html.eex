@@ -39,6 +39,7 @@
       <% end %>
       
       <td>
+        <span><%= link "Documentos", to: Routes.customer_document_path(@conn, :index, customer), class: "uk-button uk-button-primary" %></span>
         <span><%= link "Detalhes", to: Routes.customer_path(@conn, :show, customer), class: "uk-button uk-button-primary" %></span>
         <span><%= link "Editar", to: Routes.customer_path(@conn, :edit, customer), class: "uk-button uk-button-secondary" %></span>
         <span><%= link "Deletar", to: Routes.customer_path(@conn, :delete, customer), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>

@@ -4,8 +4,8 @@ defmodule Safedoc.Setting.IndexerData do
 
   schema "indexer_datas" do
     field :name, :string
-    belongs_to :document_id, Safedoc.Archive.Document
-    belongs_to :indexer_id, Safedoc.Setting.Indexer
+    belongs_to :document, Safedoc.Archive.Document
+    belongs_to :indexer, Safedoc.Setting.Indexer
 
     timestamps()
   end

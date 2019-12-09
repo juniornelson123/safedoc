@@ -1,4 +1,4 @@
-defmodule SafedocWeb.DocumentController do
+defmodule SafedocWeb.Customer.DocumentController do
   use SafedocWeb, :controller
 
   alias Safedoc.Repo
@@ -13,18 +13,19 @@ defmodule SafedocWeb.DocumentController do
   end
 
   def new(conn, %{"customer_id" => customer_id}) do
-    customer = Account.get_customer!(customer_id)
+    customer = Account.get_customer!(customer_id) |> Repo.preload([activity: :indexers])
     changeset = Archive.change_document(%Document{})
     render(conn, "new.html", changeset: changeset, customer: customer)
   end
 
   def create(conn, %{"customer_id" => customer_id, "document" => document_params}) do
     customer = Account.get_customer!(customer_id)
+    document_params = document_params |> Map.put("customer_id", customer_id)
     case Archive.create_document(document_params) do
       {:ok, document} ->
         conn
         |> put_flash(:info, "Document created successfully.")
-        |> redirect(to: Routes.document_path(conn, :index, customer))
+        |> redirect(to: Routes.customer_document_path(conn, :index, customer))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset, customer: customer)
@@ -52,7 +53,7 @@ defmodule SafedocWeb.DocumentController do
       {:ok, document} ->
         conn
         |> put_flash(:info, "Document updated successfully.")
-        |> redirect(to: Routes.document_path(conn, :index, customer))
+        |> redirect(to: Routes.customer_document_path(conn, :index, customer))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", document: document, changeset: changeset, customer: customer)
@@ -66,6 +67,6 @@ defmodule SafedocWeb.DocumentController do
 
     conn
     |> put_flash(:info, "Document deleted successfully.")
-    |> redirect(to: Routes.document_path(conn, :index, customer: customer))
+    |> redirect(to: Routes.customer_document_path(conn, :index, customer: customer))
   end
 end
