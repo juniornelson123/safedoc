@@ -40,33 +40,33 @@
           <span class="uk-margin-medium-right" uk-icon="home"></span>
           <%= link "Visão Geral", to: Routes.page_path(@conn, :index)%>
         </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/servicos", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="database"></span>
+          <%= link "Serviços (Em breve)", to: Routes.service_path(@conn, :index)%>
+        </li>
         <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/clientes", do: "isActive"%>'>
-          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <span class="uk-margin-medium-right" uk-icon="user"></span>
           <%= link "Clientes", to: Routes.customer_path(@conn, :index)%>
-        </li>
-        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/categorias", do: "isActive"%>'>
-          <span class="uk-margin-medium-right" uk-icon="cog"></span>
-          <%= link "Categorias", to: Routes.category_path(@conn, :index)%>
-        </li>
-        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/recipientes", do: "isActive"%>'>
-          <span class="uk-margin-medium-right" uk-icon="users"></span>
-          <%= link "Etiquetas", to: Routes.container_path(@conn, :index)%>
         </li>
         <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/colaboradores", do: "isActive"%>'>
           <span class="uk-margin-medium-right" uk-icon="users"></span>
           <%= link "Colaboradores", to: Routes.collaborator_path(@conn, :index)%>
         </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/recipientes", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="tag"></span>
+          <%= link "Etiquetas (Recipientes)", to: Routes.container_path(@conn, :index)%>
+        </li>
+        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/categorias", do: "isActive"%>'>
+          <span class="uk-margin-medium-right" uk-icon="cog"></span>
+          <%= link "Recipientes", to: Routes.category_path(@conn, :index)%>
+        </li>
         <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/atividades", do: "isActive"%>'>
-          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <span class="uk-margin-medium-right" uk-icon="bookmark"></span>
           <%= link "Ramos de Atividade", to: Routes.activity_path(@conn, :index)%>
         </li>
         <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/passos", do: "isActive"%>'>
-          <span class="uk-margin-medium-right" uk-icon="users"></span>
+          <span class="uk-margin-medium-right" uk-icon="social"></span>
           <%= link "Status", to: Routes.step_path(@conn, :index)%>
-        </li>
-        <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/servicos", do: "isActive"%>'>
-          <span class="uk-margin-medium-right" uk-icon="users"></span>
-          <%= link "Serviços (Em breve)", to: Routes.service_path(@conn, :index)%>
         </li>
         
       </ul>

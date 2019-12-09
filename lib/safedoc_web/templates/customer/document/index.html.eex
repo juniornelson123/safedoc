@@ -20,7 +20,7 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Código</th>
+      <th>Código Etiqueta</th>
       <th></th>
     </tr>
   </thead>
@@ -31,9 +31,9 @@
       <td><%= document.code %></td>
       <td>
         <span><%= link "Indexadores", to: Routes.customer_document_indexer_data_path(@conn, :index, @customer, document), class: "uk-button uk-button-primary" %></span>
-        <span><%= link "Imprimir", to: Routes.customer_document_path(@conn, :show, @customer, document), class: "uk-button uk-button-primary", target: "_blank" %></span>
-        <span><%= link "Editar", to: Routes.customer_document_path(@conn, :edit, @customer, document), class: "uk-button uk-button-secondary" %></span>
-        <span><%= link "Deletar", to: Routes.customer_document_path(@conn, :delete, @customer, document), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+        <span><%= link "Etiqueta", to: Routes.customer_document_path(@conn, :show, @customer, document), class: "uk-button uk-button-primary", target: "_blank" %></span>
+        <span><%#= link "Editar", to: Routes.customer_document_path(@conn, :edit, @customer, document), class: "uk-button uk-button-secondary" %></span>
+        <span><%#= link "Deletar", to: Routes.customer_document_path(@conn, :delete, @customer, document), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
       </td>
     </tr>
   <% end %>

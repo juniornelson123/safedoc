@@ -25,8 +25,8 @@
       <td><%= if container.category, do: container.category.name, else: "-" %></td>
       <td>
         <span><%= link "Imprimir", to: Routes.container_path(@conn, :show, container), class: "uk-button uk-button-primary", target: "_blank" %></span>
-        <span><%= link "Editar", to: Routes.container_path(@conn, :edit, container), class: "uk-button uk-button-secondary" %></span>
-        <span><%= link "Deletar", to: Routes.container_path(@conn, :delete, container), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+        <span><%#= link "Editar", to: Routes.container_path(@conn, :edit, container), class: "uk-button uk-button-secondary" %></span>
+        <span><%#= link "Deletar", to: Routes.container_path(@conn, :delete, container), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
       </td>
     </tr>
   <% end %>

@@ -27,7 +27,7 @@
   <% end %>
   
   <div class="uk-margin">
-    <%= label f, :office, "Cargo", class: "uk-form-label" %>
+    <%= label f, :office, "Função", class: "uk-form-label" %>
     <div class="uk-form-controls">
       <%= text_input f, :office, class: "uk-input" %>
     </div>

@@ -13,7 +13,7 @@
     <tr>
       <th>ID</th>
       <th>Nome</th>
-      <th>Cargo</th>
+      <th>Função</th>
       <th></th>
     </tr>
   </thead>
@@ -24,7 +24,7 @@
       <td><%= if collaborator.user, do: collaborator.user.name, else: "-"  %></td>
       <td><%= collaborator.office %></td>
       <td>
-        <span><%= link "Detalhes", to: Routes.collaborator_path(@conn, :show, collaborator), class: "uk-button uk-button-primary" %></span>
+        <span><%#= link "Detalhes", to: Routes.collaborator_path(@conn, :show, collaborator), class: "uk-button uk-button-primary" %></span>
         <span><%= link "Editar", to: Routes.collaborator_path(@conn, :edit, collaborator), class: "uk-button uk-button-secondary" %></span>
         <span><%= link "Deletar", to: Routes.collaborator_path(@conn, :delete, collaborator), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
       </td>

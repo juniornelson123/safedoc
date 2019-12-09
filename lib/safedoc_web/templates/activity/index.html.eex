@@ -23,9 +23,9 @@
       <td><%= activity.name %></td>
       <td>
         <span><%= link "Indexadores", to: Routes.activity_indexer_path(@conn, :index, activity), class: "uk-button uk-button-primary" %></span>
-        <span><%= link "Detalhes", to: Routes.activity_path(@conn, :show, activity), class: "uk-button uk-button-primary" %></span>
+        <span><%#= link "Detalhes", to: Routes.activity_path(@conn, :show, activity), class: "uk-button uk-button-primary" %></span>
         <span><%= link "Editar", to: Routes.activity_path(@conn, :edit, activity), class: "uk-button uk-button-secondary" %></span>
-        <span><%= link "Deletar", to: Routes.activity_path(@conn, :delete, activity), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
+        <span><%#= link "Deletar", to: Routes.activity_path(@conn, :delete, activity), method: :delete, data: [confirm: "Deseja Realmente Deletar?"], class: "uk-button uk-button-danger" %></span>
       </td>
     </tr>
   <% end %>
