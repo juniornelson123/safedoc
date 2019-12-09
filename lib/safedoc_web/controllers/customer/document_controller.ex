@@ -6,6 +6,9 @@ defmodule SafedocWeb.Customer.DocumentController do
   alias Safedoc.Account
   alias Safedoc.Archive.Document
 
+  plug :put_layout, "session.html" when action in [:show]
+
+
   def index(conn, %{"customer_id" => customer_id}) do
     customer = Account.get_customer!(customer_id)
     documents = Archive.list_documents(customer_id)
@@ -18,24 +21,39 @@ defmodule SafedocWeb.Customer.DocumentController do
     render(conn, "new.html", changeset: changeset, customer: customer)
   end
 
-  def create(conn, %{"customer_id" => customer_id, "document" => document_params}) do
+  def create(conn, %{"customer_id" => customer_id, "document" => %{"cont" => cont}}) do
     customer = Account.get_customer!(customer_id)
-    document_params = document_params |> Map.put("customer_id", customer_id)
-    case Archive.create_document(document_params) do
-      {:ok, document} ->
-        conn
-        |> put_flash(:info, "Document created successfully.")
-        |> redirect(to: Routes.customer_document_path(conn, :index, customer))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset, customer: customer)
+    case Repo.transaction(fn ->
+      {parse_cont, _} = Integer.parse(cont)
+      Enum.to_list(1..parse_cont) |> Enum.each(fn item ->
+        document_params = %{code: get_code("DOC", "SAFEDOC"), customer_id: customer_id}
+        case Archive.create_document(document_params) do
+          {:ok, container} ->
+            {:ok, container}
+          {:error, %Ecto.Changeset{} = changeset} ->
+            Repo.rollback("Cannot create documents")
+        end
+      end)
+    end) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Documents created successfully.")
+        |> redirect(to: Routes.customer_document_path(conn, :index, customer))
+      {:error, _} ->
+        render(conn, "new.html")
     end
   end
 
   def show(conn, %{"customer_id" => customer_id, "id" => id}) do
     customer = Account.get_customer!(customer_id)
     document = Archive.get_document!(id)
-    render(conn, "show.html", document: document)
+    qr_code_svg = document.code
+      |> EQRCode.encode()
+      |> EQRCode.png()
+      |> Base.encode64
+
+    render(conn, "show.html", document: document, qrcode: qr_code_svg)
   end
 
   def edit(conn, %{"customer_id" => customer_id, "id" => id}) do
@@ -68,5 +86,9 @@ defmodule SafedocWeb.Customer.DocumentController do
     conn
     |> put_flash(:info, "Document deleted successfully.")
     |> redirect(to: Routes.customer_document_path(conn, :index, customer: customer))
+  end
+
+  defp get_code(prefix, sufix) do
+    "#{prefix}#{:os.system_time}#{sufix}"
   end
 end

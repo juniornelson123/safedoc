@@ -22,7 +22,7 @@
     <tr>
       <td><%= container.id %></td>
       <td><%= container.code %></td>
-      <td><%= container.category.name %></td>
+      <td><%= if container.category, do: container.category.name, else: "-" %></td>
       <td>
         <span><%= link "Imprimir", to: Routes.container_path(@conn, :show, container), class: "uk-button uk-button-primary", target: "_blank" %></span>
         <span><%= link "Editar", to: Routes.container_path(@conn, :edit, container), class: "uk-button uk-button-secondary" %></span>
