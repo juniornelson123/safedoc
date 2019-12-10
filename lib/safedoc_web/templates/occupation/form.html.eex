@@ -1,23 +1,19 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [class: "uk-form-stacked"], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-
-  <%= label f, :status %>
-  <%= text_input f, :status %>
-  <%= error_tag f, :status %>
-
-  <%= label f, :date_start %>
-  <%= datetime_select f, :date_start %>
-  <%= error_tag f, :date_start %>
-
-  <%= label f, :date_end %>
-  <%= datetime_select f, :date_end %>
-  <%= error_tag f, :date_end %>
+  <div class="uk-margin">
+    <%= label f, :step_id, "Processo",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= select f, :step_id, categories, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :step_id %>
+  </div>
 
   <div>
-    <%= submit "Save" %>
+    <span><%= link "Cancelar", to: Routes.collaborator_occupation_path(@conn, :index, @collaborator), class: "uk-button uk-button-danger" %></span>
+    <%= submit "Salvar", class: "uk-button uk-button-primary" %>
   </div>
 <% end %>

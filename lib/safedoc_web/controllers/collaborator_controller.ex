@@ -6,7 +6,7 @@ defmodule SafedocWeb.CollaboratorController do
   alias Safedoc.Account.Collaborator
 
   def index(conn, _params) do
-    collaborators = Account.list_collaborators() |> Repo.preload([:user])
+    collaborators = Account.list_collaborators() |> Repo.preload([:user, [occupations: :step]])
     render(conn, "index.html", collaborators: collaborators)
   end
 
@@ -33,13 +33,13 @@ defmodule SafedocWeb.CollaboratorController do
   end
 
   def edit(conn, %{"id" => id}) do
-    collaborator = Account.get_collaborator!(id) |> Repo.preload([:user])
+    collaborator = Account.get_collaborator!(id) |> Repo.preload([:user, :occupations])
     changeset = Account.change_collaborator(collaborator)
     render(conn, "edit.html", collaborator: collaborator, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "collaborator" => collaborator_params}) do
-    collaborator = Account.get_collaborator!(id) |> Repo.preload([:user])
+    collaborator = Account.get_collaborator!(id) |> Repo.preload([:user, :occupations])
 
     case Account.update_collaborator(collaborator, collaborator_params) do
       {:ok, collaborator} ->

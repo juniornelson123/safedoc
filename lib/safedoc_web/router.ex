@@ -35,7 +35,9 @@ defmodule SafedocWeb.Router do
 
     get "/", PageController, :index
     resources "/categorias", CategoryController
-    resources "/colaboradores", CollaboratorController
+    resources "/colaboradores", CollaboratorController do
+      resources "/funcoes", OccupationController
+    end
     resources "/recipientes", ContainerController
     resources "/clientes", CustomerController do
       resources "/documentos", Customer.DocumentController do
@@ -43,7 +45,6 @@ defmodule SafedocWeb.Router do
       end
     end
     resources "/servicos", ServiceController
-    resources "/funcoes", OccupationController
     resources "/passos", StepController
     resources "/atividades", ActivityController do
       resources "/indexadores", IndexerController

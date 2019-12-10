@@ -13,26 +13,19 @@
       <%= error_tag fp, :name %>
     </div>
     <div class="uk-margin">
-      <%= label fp, :email, "Email",class: "uk-form-label" %>
+      <%= label fp, :email, "Nome de usuário",class: "uk-form-label" %>
       <div class="uk-form-controls">
         <%= text_input fp, :email, class: "uk-input" %>
       </div>
       <%= error_tag fp, :email %>
     </div>
     <div class="uk-margin">
+      <%= label fp, :password, "Senha para acesso",class: "uk-form-label" %>
       <div class="uk-form-controls">
-        <%= hidden_input fp, :password, value: "12345678", class: "uk-input" %>
+        <%= password_input fp, :password, value: "", class: "uk-input" %>
       </div>
     </div>
   <% end %>
-  
-  <div class="uk-margin">
-    <%= label f, :office, "Função", class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :office, class: "uk-input" %>
-    </div>
-    <%= error_tag f, :office %>
-  </div>
   <div>
     <span><%= link "Cancelar", to: Routes.collaborator_path(@conn, :index), class: "uk-button uk-button-danger" %></span>
     <%= submit "Salvar", class: "uk-button uk-button-primary" %>

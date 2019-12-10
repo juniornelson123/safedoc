@@ -7,6 +7,7 @@ defmodule Safedoc.Repo.Migrations.CreateCategories do
       add :amount, :integer
       add :prefix, :string
       add :sufix, :string
+      add :category_id, references(:categories, on_delete: :nothing)
 
       timestamps()
     end
