@@ -7,6 +7,7 @@ defmodule Safedoc.Archive.Category do
     field :name, :string
     field :prefix, :string
     field :sufix, :string
+    belongs_to :category, Safedoc.Archive.Category
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule Safedoc.Archive.Category do
   @doc false
   def changeset(category, attrs) do
     category
-    |> cast(attrs, [:name, :amount, :sufix, :prefix])
+    |> cast(attrs, [:name, :amount, :sufix, :prefix, :category_id])
     |> validate_required([:name, :amount])
   end
 end

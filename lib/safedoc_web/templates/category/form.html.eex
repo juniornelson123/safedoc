@@ -13,14 +13,6 @@
     </div>
     <%= error_tag f, :name %>
   </div>
-  
-  <div class="uk-margin">
-    <%= label f, :amount, "Quantidade de items para armazenamento",class: "uk-form-label" %>
-    <div class="uk-form-controls">
-      <%= text_input f, :amount, class: "uk-input" %>
-    </div>
-    <%= error_tag f, :amount %>
-  </div>
 
   <div class="uk-margin">
     <%= label f, :prefix, "Prefixo da etiqueta",class: "uk-form-label" %>
@@ -37,6 +29,24 @@
     </div>
     <%= error_tag f, :sufix %>
   </div>
+  
+  <div class="uk-margin">
+    <%= label f, :amount, "Quantidade de itens para armazenamento",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= text_input f, :amount, class: "uk-input" %>
+    </div>
+    <%= error_tag f, :amount %>
+  </div>
+
+  <div class="uk-margin">
+    <%= label f, :category_id, "Itens para armazenamento",class: "uk-form-label" %>
+    <div class="uk-form-controls">
+      <%= select f, :category_id, categories, class: "uk-input", prompt: "Selecione os items para armazenamento" %>
+    </div>
+    <%= error_tag f, :category_id %>
+  </div>
+  
+
   <div>
     <span><%= link "Cancelar", to: Routes.category_path(@conn, :index), class: "uk-button uk-button-danger" %></span>
     <%= submit "Salvar", class: "uk-button uk-button-primary" %>

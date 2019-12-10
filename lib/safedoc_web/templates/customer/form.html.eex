@@ -18,28 +18,15 @@
     </div>
     <%= error_tag f, :activity_id %>
   </div>
-  <div id="individual">
-    <%= inputs_for f, :user, fn fp -> %>
-      <div class="uk-margin">
-        <%= label fp, :name, "Nome",class: "uk-form-label" %>
-        <div class="uk-form-controls">
-          <%= text_input fp, :name, class: "uk-input" %>
-        </div>
-        <%= error_tag fp, :name %>
-      </div>
-      <div class="uk-margin">
-        <%= label fp, :email, "Email",class: "uk-form-label" %>
-        <div class="uk-form-controls">
-          <%= text_input fp, :email, class: "uk-input" %>
-        </div>
-        <%= error_tag fp, :email %>
-      </div>
-      <div class="uk-margin">
-        <div class="uk-form-controls">
-          <%= hidden_input fp, :password, value: "12345678", class: "uk-input" %>
-        </div>
-      </div>
+  <%= if @customer do %>
+    <%= if @customer.kind == "juridical" do %>
+      <div id="individual" class="isHidden">
+    <% else %>
+      <div id="individual">
     <% end %>
+  <% else %>
+    <div id="individual">
+  <% end %>
     <div class="uk-margin">
       <%= label f, :cpf, "CPF",class: "uk-form-label" %>
       <div class="uk-form-controls">
@@ -56,7 +43,16 @@
     </div>
   </div>
 
-  <div id="juridical" class="isHidden">
+  <%= if @customer do %>
+    <%= if @customer.kind == "individual" do %>
+      <div id="juridical" class="isHidden">
+    <% else %>
+      <div id="juridical">
+    <% end %>
+  <% else %>
+    <div id="juridical">
+  <% end %>
+
     <div class="uk-margin">
       <%= label f, :reason_social, "Razão Social",class: "uk-form-label" %>
       <div class="uk-form-controls">
@@ -93,6 +89,28 @@
       <%= error_tag f, :municipal_registration %>
     </div>
   </div>
+
+  <%= inputs_for f, :user, fn fp -> %>
+    <div class="uk-margin">
+      <%= label fp, :name, "Nome do Responsável",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input fp, :name, class: "uk-input" %>
+      </div>
+      <%= error_tag fp, :name %>
+    </div>
+    <div class="uk-margin">
+      <%= label fp, :email, "Email do Responsável",class: "uk-form-label" %>
+      <div class="uk-form-controls">
+        <%= text_input fp, :email, class: "uk-input" %>
+      </div>
+      <%= error_tag fp, :email %>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-form-controls">
+        <%= hidden_input fp, :password, value: "12345678", class: "uk-input" %>
+      </div>
+    </div>
+  <% end %>
   <div>
     <span><%= link "Cancelar", to: Routes.customer_path(@conn, :index), class: "uk-button uk-button-danger" %></span>
     <%= submit "Salvar", class: "uk-button uk-button-primary" %>

@@ -13,6 +13,7 @@
     <tr>
       <th>Nome</th>
       <th>Limite Armazenamento</th>
+      <th>Item Armazenamento</th>
       <th></th>
     </tr>
   </thead>
@@ -21,6 +22,7 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= category.amount %></td>
+        <td><%= if category.category, do: category.category.name, else: "-" %></td>
         
         <td>
           <span><%= link "Editar", to: Routes.category_path(@conn, :edit, category), class: "uk-button uk-button-secondary" %></span>

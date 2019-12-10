@@ -1,4 +1,4 @@
-<h1 class="uk-text-lead">Novo Status</h1>
+<h1 class="uk-text-lead">Novo Processos</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.step_path(@conn, :update, @step)) %>
 

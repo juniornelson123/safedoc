@@ -16,6 +16,6 @@ defmodule Safedoc.Setting.Occupation do
   def changeset(occupation, attrs) do
     occupation
     |> cast(attrs, [:status, :date_start, :date_end, :step_id, :collaborator_id])
-    |> validate_required([:status, :date_start, :date_end])
+    |> validate_required([:step_id, :date_start, :collaborator_id])
   end
 end

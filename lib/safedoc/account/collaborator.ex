@@ -6,7 +6,7 @@ defmodule Safedoc.Account.Collaborator do
     field :office, :string
     field :status, :string
     belongs_to :user, Safedoc.Account.User
-
+    has_many :occupations, Safedoc.Setting.Occupation
     timestamps()
   end
 
@@ -15,6 +15,6 @@ defmodule Safedoc.Account.Collaborator do
     collaborator
     |> cast(attrs, [:office, :status])
     |> cast_assoc(:user)
-    |> validate_required([:office])
+    |> validate_required([])
   end
 end

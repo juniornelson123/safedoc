@@ -1,11 +1,12 @@
 defmodule SafedocWeb.CategoryController do
   use SafedocWeb, :controller
 
+  alias Safedoc.Repo
   alias Safedoc.Archive
   alias Safedoc.Archive.Category
 
   def index(conn, _params) do
-    categories = Archive.list_categories()
+    categories = Archive.list_categories() |> Repo.preload([:category])
     render(conn, "index.html", categories: categories)
   end
 

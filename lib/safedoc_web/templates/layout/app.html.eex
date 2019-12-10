@@ -66,7 +66,7 @@
         </li>
         <li class='uk-flex uk-flex-middle list-item <%= if @conn.request_path =~ "/passos", do: "isActive"%>'>
           <span class="uk-margin-medium-right" uk-icon="social"></span>
-          <%= link "Status", to: Routes.step_path(@conn, :index)%>
+          <%= link "Processos", to: Routes.step_path(@conn, :index)%>
         </li>
         
       </ul>

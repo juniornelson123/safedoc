@@ -113,6 +113,20 @@ defmodule Safedoc.Setting do
       [%Occupation{}, ...]
 
   """
+  def list_occupations(collaborator_id) do
+    query = from o in Occupation, where: o.collaborator_id == ^collaborator_id, order_by: [desc: o.inserted_at]
+    Repo.all(query)
+  end
+
+  @doc """
+  Returns the list of occupations.
+
+  ## Examples
+
+      iex> list_occupations()
+      [%Occupation{}, ...]
+
+  """
   def list_occupations do
     Repo.all(Occupation)
   end
