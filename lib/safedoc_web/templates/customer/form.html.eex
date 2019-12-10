@@ -18,7 +18,7 @@
     </div>
     <%= error_tag f, :activity_id %>
   </div>
-  <%= if @customer do %>
+  <%= if assigns[:customer] do %>
     <%= if @customer.kind == "juridical" do %>
       <div id="individual" class="isHidden">
     <% else %>
@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <%= if @customer do %>
+  <%= if assigns[:customer] do %>
     <%= if @customer.kind == "individual" do %>
       <div id="juridical" class="isHidden">
     <% else %>

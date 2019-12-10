@@ -19,7 +19,7 @@ defmodule SafedocWeb.ActivityController do
       {:ok, activity} ->
         conn
         |> put_flash(:info, "Activity created successfully.")
-        |> redirect(to: Routes.activity_path(conn, :show, activity))
+        |> redirect(to: Routes.activity_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -44,7 +44,7 @@ defmodule SafedocWeb.ActivityController do
       {:ok, activity} ->
         conn
         |> put_flash(:info, "Activity updated successfully.")
-        |> redirect(to: Routes.activity_path(conn, :show, activity))
+        |> redirect(to: Routes.activity_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", activity: activity, changeset: changeset)
